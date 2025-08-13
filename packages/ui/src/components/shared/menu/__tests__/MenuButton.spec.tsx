@@ -69,7 +69,7 @@ describe('MenuButton', () => {
   describe('ExportWalletDialog', () => {
     beforeEach(async () => {
       keyring = await initializeKeyring();
-      render(<MenuButton />);
+      render(<MenuButton />, { keyring });
 
       await user.click(await screen.findByRole('button', { name: /Menu/ }));
       await user.click(await screen.findByRole('menuitem', { name: /Export Wallet/ }));

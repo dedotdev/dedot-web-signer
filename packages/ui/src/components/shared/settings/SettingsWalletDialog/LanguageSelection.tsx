@@ -18,9 +18,12 @@ const LanguageSelection: FC<Props> = () => {
   const {
     i18n: { resolvedLanguage },
   } = useTranslation();
+
   const { language } = useSelector((state: RootState) => state.settings);
   const [loading, setLoading] = useState(resolvedLanguage !== language);
   const { open, anchorEl, doOpen, doClose } = useMenuDropdown();
+
+  console.log('resolvedLanguage', resolvedLanguage, loading);
 
   useEffect(() => {
     if (resolvedLanguage === language) setLoading(false);

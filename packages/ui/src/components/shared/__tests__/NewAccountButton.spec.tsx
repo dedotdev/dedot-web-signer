@@ -24,7 +24,7 @@ describe('NewAccountButton', () => {
       user = newUser();
       onCreated = vi.fn();
 
-      const result = render(<NewAccountButton onCreated={onCreated} />);
+      const result = render(<NewAccountButton onCreated={onCreated} />, { keyring });
       container = result.container;
       const button = screen.getByText('New Account');
       user.click(button);

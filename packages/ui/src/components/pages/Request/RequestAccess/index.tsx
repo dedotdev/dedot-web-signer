@@ -41,9 +41,11 @@ const RequestAccess: FC<RequestProps> = ({ className = '', message }) => {
     <div className={className}>
       <h2 className='text-center'>{t<string>('Wallet Access Request')}</h2>
       <p className='text-center'>
-        <Trans values={{ appName: requestBody.appName, origin: origin }} shouldUnescape>
-          An application, self-identifying as request app name is requesting access your wallet from origin.
-        </Trans>
+        <Trans 
+          i18nKey="An application, self-identifying as request app name is requesting access your wallet from origin."
+          values={{ appName: requestBody.appName, origin: origin }} 
+          shouldUnescape
+        />
       </p>
 
       {seedReady ? (
