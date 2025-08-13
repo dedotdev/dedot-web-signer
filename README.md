@@ -228,7 +228,7 @@ const onClickTransferBalance = async () => {
 await onClickTransferBalance();
 ```
 
-Integration example can be found in the playground dapp source code in [this repository](https://github.com/dedotdev/try-dedot).
+Integration example can be found in the playground dapp source code in [this repository](https://github.com/dedotdev/trydedot).
 
 ## How to run tests
 1. [Set up the development environment](#set-up-development-environment).
