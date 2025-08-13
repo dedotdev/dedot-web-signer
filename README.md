@@ -3,7 +3,7 @@
 
 <br/>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/6867026/223087394-fb37466f-3cb8-4cc8-ac83-e807514dc366.png" height="50">
+  <img height="100" alt="dedot-logo-dark" src="https://github.com/user-attachments/assets/c97ce3fe-c11e-42ee-9b06-8d865d9c1830" />
 </p>
 
 <h1 align="center">
@@ -111,10 +111,10 @@ signOut();
 ```
 
 Notes:
-- By default, the SDK will connect to Dedot Signer at the offical URL `https://app.dedot.dev`.
+- By default, the SDK will connect to Dedot Signer at the offical URL `https://signer.dedot.dev`.
 - You can also connect to a different URL of the wallet by customizing SDK options:
 ```typescript
-  const sdk = new DedotSignerSdk({ walletUrl: 'https://dedot.dev' });
+  const sdk = new DedotSignerSdk({ walletUrl: 'https://signer.example.dev' });
   await sdk.initialize();  
 ```
 
@@ -202,8 +202,7 @@ const onClickConnectWallet = async () => {
 2. For actions that might take time (asynchronously) to complete (transfer balance ...), launch a waiting wallet instance (`DedotSignerSdk.newWaitingWalletInstance()`) first thing on user interaction.  
 ```ts
 // Connect to Polkadot Network
-const wsProvider = new WsProvider('wss://rpc.polkadot.io');
-const api = await ApiPromise.create({ provider: wsProvider });
+const client = await DedotClient.new(new WsProvider('wss://rpc.polkadot.io'));
 
 // initialize Dedot Signer API
 const sdk = new DedotSignerSdk()
@@ -220,7 +219,7 @@ const onClickTransferBalance = async () => {
   const fromAddress = 0x000...;
   const destinationAddress = 0x000...;
   
-  const hash = await api.tx.balances
+  const hash = await client.tx.balances
     .transferKeepAlive(destinationAddress, 1_000_000_000_000)
     .signAndSend(fromAddress, { signer: injected.signer });
 }
