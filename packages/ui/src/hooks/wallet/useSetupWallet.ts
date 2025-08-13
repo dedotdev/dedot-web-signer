@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useToggle } from 'react-use';
-import { StandardCoongError } from '@coong/utils';
+import { StandardDedotSignerError } from '@dedot/signer-utils';
 import { useWalletSetup } from 'providers/WalletSetupProvider';
 import { useWalletState } from 'providers/WalletStateProvider';
 import { appActions } from 'redux/slices/app';
@@ -20,7 +20,7 @@ export default function useSetupWallet({ secretPhrase, password }: SetupWalletOp
 
   const setup = () => {
     if (!secretPhrase || !password) {
-      throw new StandardCoongError('Secret recovery phrase or password are missing');
+      throw new StandardDedotSignerError('Secret recovery phrase or password are missing');
     }
 
     setLoading(true);

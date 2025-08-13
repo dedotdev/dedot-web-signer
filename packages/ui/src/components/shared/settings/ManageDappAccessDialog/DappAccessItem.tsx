@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { AppInfo } from '@coong/base/requests/WalletState';
+import { AppInfo } from '@dedot/signer-base/requests/WalletState';
 import clsx from 'clsx';
 import RemoveDappAccessButton from 'components/shared/settings/ManageDappAccessDialog/RemoveDappAccessButton';
 import useAccounts from 'hooks/accounts/useAccounts';

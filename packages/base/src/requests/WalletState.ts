@@ -4,8 +4,8 @@ import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { u8aToHex, u8aWrapBytes } from '@polkadot/util';
 import { encodeAddress } from '@polkadot/util-crypto';
 import { KeypairType } from '@polkadot/util-crypto/types';
-import Keyring from '@coong/keyring';
-import { assert, StandardCoongError, trimOffUrlProtocol } from '@coong/utils';
+import Keyring from '@dedot/signer-keyring';
+import { assert, StandardDedotSignerError, trimOffUrlProtocol } from '@dedot/signer-utils';
 import { BehaviorSubject } from 'rxjs';
 import { defaultNetwork } from '../networks';
 import {
@@ -223,7 +223,7 @@ export default class WalletState {
   /**
    * Get app information by an url
    *
-   * @throws {CoongError} if the app information is not found / has not been authorized yet
+   * @throws {DedotError} if the app information is not found / has not been authorized yet
    * @param url
    */
   getAuthorizedApp(url: string): AppInfo {
@@ -272,11 +272,11 @@ export default class WalletState {
   getCurrentRequestMessage = (requestName?: RequestName) => {
     const currentRequestMessage = this.#requestMessageSubject.value;
     if (!currentRequestMessage) {
-      throw new StandardCoongError('No request message available');
+      throw new StandardDedotSignerError('No request message available');
     }
 
     if (requestName && currentRequestMessage?.request.name !== requestName) {
-      throw new StandardCoongError('Invalid request name');
+      throw new StandardDedotSignerError('Invalid request name');
     }
 
     return currentRequestMessage;
@@ -310,7 +310,7 @@ export default class WalletState {
 
   rejectRequestAccess = () => {
     const { reject } = this.getCurrentRequestMessage('tab/requestAccess');
-    reject(new StandardCoongError(AccessStatus.DENIED));
+    reject(new StandardDedotSignerError(AccessStatus.DENIED));
   };
 
   async approveUpdateAccess(authorizedAccounts: string[]) {
@@ -337,7 +337,7 @@ export default class WalletState {
 
   rejectUpdateAccess = () => {
     const { reject } = this.getCurrentRequestMessage('tab/updateAccess');
-    reject(new StandardCoongError(AccessStatus.DENIED));
+    reject(new StandardDedotSignerError(AccessStatus.DENIED));
   };
 
   async approveSignExtrinsic(password: string) {
@@ -368,7 +368,7 @@ export default class WalletState {
 
   cancelSignExtrinsic() {
     const currentMessage = this.getCurrentRequestMessage('tab/signExtrinsic');
-    currentMessage.reject(new StandardCoongError('Cancelled'));
+    currentMessage.reject(new StandardDedotSignerError('Cancelled'));
   }
 
   async signRawMessage(password: string) {
@@ -395,7 +395,7 @@ export default class WalletState {
 
   cancelSignRawMessage() {
     const currentMessage = this.getCurrentRequestMessage('tab/signRaw');
-    currentMessage.reject(new StandardCoongError('Cancelled'));
+    currentMessage.reject(new StandardDedotSignerError('Cancelled'));
   }
 
   /**

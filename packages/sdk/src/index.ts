@@ -1,3 +1,3 @@
-import CoongSdk from './CoongSdk';
+import { DedotSignerSdk } from './DedotSignerSdk';
 
-export default CoongSdk;
+export { DedotSignerSdk };

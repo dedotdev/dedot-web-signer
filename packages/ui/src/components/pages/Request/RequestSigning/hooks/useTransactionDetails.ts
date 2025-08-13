@@ -3,7 +3,7 @@ import { TypeRegistry } from '@polkadot/types';
 import { ExtrinsicEra } from '@polkadot/types/interfaces';
 import { SignerPayloadJSON } from '@polkadot/types/types';
 import { bnToBn, formatNumber, hexToNumber } from '@polkadot/util';
-import { WalletRequestWithResolver } from '@coong/base/types';
+import { WalletRequestWithResolver } from '@dedot/signer-base/types';
 import { DetailRowProps } from 'components/pages/Request/RequestSigning/DetailRow';
 
 function mortalityAsString(era: ExtrinsicEra, hexBlockNumber: string): string {

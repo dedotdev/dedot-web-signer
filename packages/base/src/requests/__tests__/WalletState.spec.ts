@@ -1,7 +1,7 @@
-import { newWalletRequest } from '@coong/base';
-import { AccessStatus, WalletRequestMessage, WalletResponse } from '@coong/base/types';
-import { AccountInfo } from '@coong/keyring/types';
-import { CoongError, ErrorCode, StandardCoongError, trimOffUrlProtocol } from '@coong/utils';
+import { newWalletRequest } from '@dedot/signer-base';
+import { AccessStatus, WalletRequestMessage, WalletResponse } from '@dedot/signer-base/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
+import { DedotSignerError, ErrorCode, StandardDedotSignerError, trimOffUrlProtocol } from '@dedot/signer-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import WalletState, { AppInfo, AUTHORIZED_ACCOUNTS_KEY, AuthorizedApps } from '../WalletState';
 import { newWalletState, PASSWORD, pick, RANDOM_APP_URL, setupAuthorizedApps } from './setup';
@@ -46,7 +46,7 @@ describe('extractAppId', () => {
 describe('getAuthorizedApp', () => {
   it('should throw error if app has not been authorized', async () => {
     expect(() => state.getAuthorizedApp(RANDOM_APP_URL)).toThrowError(
-      new StandardCoongError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
+      new StandardDedotSignerError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
     );
   });
 
@@ -128,7 +128,7 @@ describe('removeAuthorizedApp', () => {
     state.removeAuthorizedApp(state.extractAppId(RANDOM_APP_URL));
 
     expect(() => state.getAuthorizedApp(RANDOM_APP_URL)).toThrowError(
-      new StandardCoongError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
+      new StandardDedotSignerError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
     );
     expect(localStorage.getItem(AUTHORIZED_ACCOUNTS_KEY)).toEqual('{}');
   });
@@ -208,7 +208,7 @@ describe('injectedAccounts', () => {
 describe('ensureAccountAuthorized', () => {
   it('should throw error if application is not authorized', async () => {
     expect(() => state.ensureAccountAuthorized(RANDOM_APP_URL, account01.address)).toThrowError(
-      new StandardCoongError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
+      new StandardDedotSignerError(`The app at ${RANDOM_APP_URL} has not been authorized yet!`),
     );
   });
 
@@ -216,7 +216,7 @@ describe('ensureAccountAuthorized', () => {
     const { randomAppUrl } = setupAuthorizedApps(state);
 
     expect(() => state.ensureAccountAuthorized(randomAppUrl, account01.address)).toThrowError(
-      new StandardCoongError(
+      new StandardDedotSignerError(
         `The app at ${randomAppUrl} is not authorized to access account with address ${account01.address}!`,
       ),
     );
@@ -231,7 +231,9 @@ describe('ensureAccountAuthorized', () => {
 
 describe('getCurrentRequestMessage', () => {
   it("should throw error if there's no current message", async () => {
-    expect(() => state.getCurrentRequestMessage()).toThrowError(new StandardCoongError('No request message available'));
+    expect(() => state.getCurrentRequestMessage()).toThrowError(
+      new StandardDedotSignerError('No request message available'),
+    );
   });
 
   describe('with current message', () => {
@@ -248,7 +250,7 @@ describe('getCurrentRequestMessage', () => {
 
     it('should throw error if request name does not match current message', async () => {
       expect(() => state.getCurrentRequestMessage('tab/signExtrinsic')).toThrowError(
-        new StandardCoongError('Invalid request name'),
+        new StandardDedotSignerError('Invalid request name'),
       );
     });
 
@@ -340,7 +342,7 @@ describe('rejectRequestAccess', () => {
           resolve();
         }),
       ]),
-    ).rejects.toThrowError(new StandardCoongError(AccessStatus.DENIED));
+    ).rejects.toThrowError(new StandardDedotSignerError(AccessStatus.DENIED));
   });
 });
 
@@ -428,7 +430,7 @@ describe('rejectUpdateAccess', () => {
           resolve();
         }),
       ]),
-    ).rejects.toThrowError(new StandardCoongError(AccessStatus.DENIED));
+    ).rejects.toThrowError(new StandardDedotSignerError(AccessStatus.DENIED));
   });
 });
 
@@ -497,7 +499,7 @@ describe('sign extrinsic', () => {
 
     it('should throw error if password is not correct', async () => {
       await expect(handleSignExtrinsicApproval(account01.address, 'incorrect-password')).rejects.toThrowError(
-        new CoongError(ErrorCode.PasswordIncorrect),
+        new DedotSignerError(ErrorCode.PasswordIncorrect),
       );
     });
 
@@ -505,7 +507,7 @@ describe('sign extrinsic', () => {
       vi.spyOn(state, 'ensureAccountAuthorized').mockImplementation(() => true);
 
       await expect(handleSignExtrinsicApproval('0xNotExistedAddress', PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.KeypairNotFound),
+        new DedotSignerError(ErrorCode.KeypairNotFound),
       );
     });
 
@@ -527,7 +529,7 @@ describe('sign extrinsic', () => {
             resolve();
           }),
         ]),
-      ).rejects.toThrowError(new StandardCoongError('Cancelled'));
+      ).rejects.toThrowError(new StandardDedotSignerError('Cancelled'));
     });
   });
 });

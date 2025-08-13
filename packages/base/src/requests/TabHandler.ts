@@ -1,5 +1,5 @@
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
-import { CoongError, ErrorCode } from '@coong/utils';
+import { DedotSignerError, ErrorCode } from '@dedot/signer-utils';
 import { RequestName, WalletRequestMessage, WalletResponse } from '../types';
 import Handler from './Handler';
 
@@ -31,7 +31,7 @@ export default class TabHandler extends Handler {
       case 'tab/updateAccess':
         break;
       default:
-        throw new CoongError(ErrorCode.UnknownRequest);
+        throw new DedotSignerError(ErrorCode.UnknownRequest);
     }
 
     return this.state.newRequestMessage(message);

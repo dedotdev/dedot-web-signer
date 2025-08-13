@@ -1,3 +1,3 @@
-# @coong/sdk
+# @dedot/signer-sdk
 
-Coong SDK to help [integrate Coong Wallet into dapps](https://github.com/CoongCrafts/coong-wallet#integrate-coong-wallet-into-your-dapps)
+Dedot Signer SDK to help [integrate Dedot Signer into your dapps](https://github.com/dedotdev/dedot-web-signer#integrate-dedot-signer-into-your-dapps)

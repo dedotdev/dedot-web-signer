@@ -1,5 +1,5 @@
 > [!NOTE]
-> We're in the process of rebranding Coong Wallet to Dedot Signer, information in this repo might be conflicted or confusing.
+> We're in the process of rebranding Dedot Signer to Dedot Signer, information in this repo might be conflicted or confusing.
 
 <br/>
 <p align="center">
@@ -7,7 +7,7 @@
 </p>
 
 <h1 align="center">
-Coong Wallet
+Dedot Signer
 </h1>
 
 <p align="center">
@@ -15,23 +15,23 @@ A website-based multi-chain crypto wallet for <a href="https://polkadot.network/
 <p>
 
 <p align="center">
-<a href="https://coongwallet.io">Coong Wallet Website</a> • <a href="https://app.coongwallet.io">Coong Wallet App</a> • <a href="https://dapp.coongwallet.io">Example Playground Dapp</a>
+<a href="https://signer.dedot.dev">Example Playground Dapp</a>
 <p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/CoongCrafts/coong-wallet?style=flat-square"/>
-  <img src="https://img.shields.io/github/actions/workflow/status/CoongCrafts/coong-wallet/run-tests.yml?style=flat-square"/>
-  <img src="https://img.shields.io/github/package-json/v/CoongCrafts/coong-wallet?filename=packages%2Fui%2Fpackage.json&style=flat-square"/>
+  <img src="https://img.shields.io/github/license/dedotdev/dedot-web-signer?style=flat-square"/>
+  <img src="https://img.shields.io/github/actions/workflow/status/dedotdev/dedot-web-signer/run-tests.yml?style=flat-square"/>
+  <img src="https://img.shields.io/github/package-json/v/dedotdev/dedot-web-signer?filename=packages%2Fui%2Fpackage.json&style=flat-square"/>
 </p>
 
 <p align="center">
   <img width="479" src="https://user-images.githubusercontent.com/6867026/227230786-0796214a-3e3f-42af-94e9-d4122c730b62.png">
 </p>
 
-## What to expect from Coong Wallet?
-- No need for extra steps to install browser extensions or mobile apps, Coong Wallet is just a website running on your browser
+## What to expect from Dedot Signer?
+- No need for extra steps to install browser extensions or mobile apps, Dedot Signer is just a website running on your browser
 - Works on both desktop and mobile devices
-- Compatible with [Polkadot.js extension](https://github.com/polkadot-js/extension) API, [integrate Coong Wallet](#integrate-coong-wallet-into-your-dapps) into your dapp within just a few steps
+- Compatible with [Polkadot.js extension](https://github.com/polkadot-js/extension) API, [integrate Dedot Signer](#integrate-dedot-signer-into-your-dapps) into your dapp within just a few steps
 - One seed phrase to recover all created accounts (excluding imported accounts/private keys)
 - Private keys and seed phrase are encrypted with a user chosen wallet password
 
@@ -39,12 +39,12 @@ A website-based multi-chain crypto wallet for <a href="https://polkadot.network/
 - Desktop: https://youtu.be/9fIcAlpx_UI
 - Mobile: https://youtu.be/F8S2fmQFRWQ
 
-## Why do we build Coong Wallet?
+## Why do we build Dedot Signer?
 The Polkadot and Kusama ecosystems currently offers several wallet solutions with excellent UI/UX, such as SubWallet, NovaWallet, Talisman. However, on desktop, most of these solutions are browser extension-based wallets, requiring users to install an extension to interact with dapps and networks. On mobile, since most browsers do not support extensions, users need to install wallet mobile apps and access dapps through a built-in Dapp Browser within the wallets (SubWallet, Nova). This creates an inconsistent experience between desktop and mobile, which poses a barrier for onboarding new users to the ecosystem, especially those who are new to or less familiar with cryptocurrencies.
 
 As users, we love the website-based wallet experience provided by the [NEAR wallet](https://wallet.near.org/) in the NEAR ecosystem. It allows users to connect to dapps using their preferred browsers and access their wallets smoothly within the same browser on both desktop and mobile platforms.
 
-With that inspiration, we propose building Coong Wallet, a website-based multi-chain wallet, to offer a similar experience in the Polkadot and Kusama ecosystems. We believe that Coong Wallet will bring significant benefits to both users and the ecosystems as a whole.
+With that inspiration, we propose building Dedot Signer, a website-based multi-chain wallet, to offer a similar experience in the Polkadot and Kusama ecosystems. We believe that Dedot Signer will bring significant benefits to both users and the ecosystems as a whole.
 
 ## Set up development environment
 1. Install NodeJS
@@ -54,49 +54,49 @@ With that inspiration, we propose building Coong Wallet, a website-based multi-c
   
 ## Run it on Docker
 1. Make sure you have [Docker](https://docs.docker.com/get-docker/) installed
-2. Build an image of the wallet: `docker build -t coong-wallet .`
-3. Run it: `docker run -dp 3030:3030 coong-wallet`
+2. Build an image of the wallet: `docker build -t dedot-signer .`
+3. Run it: `docker run -dp 3030:3030 dedot-signer`
   
-## Integrate Coong Wallet into your dapps
-1. Install `@coong/sdk` to your dapp:
+## Integrate Dedot Signer into your dapps
+1. Install `@dedot/signer-sdk` to your dapp:
 ```bash
 # via yarn
-yarn add @coong/sdk
+yarn add @dedot/signer-sdk
   
 # via npm
-npm install --save @coong/sdk
+npm install --save @dedot/signer-sdk
 ```  
-2. Inject API & interact with Coong Wallet using the [Polakdot{.js} extension API](https://github.com/polkadot-js/extension#injection-information)
+2. Inject API & interact with Dedot Signer using the [Polakdot{.js} extension API](https://github.com/polkadot-js/extension#injection-information)
 ```typescript
-import CoongSdk from '@coong/sdk';
+import DedotSignerSdk from '@dedot/signer-sdk';
 
-// Inject Coong Wallet API
-const initializeCoongWallet = async () => {  
-  const sdk = new CoongSdk()
+// Inject Dedot Signer API
+const initializeDedotSigner = async () => {  
+  const sdk = new DedotSignerSdk()
   await sdk.initialize();
   
   return sdk;
 }
   
-await initializeCoongWallet();
+await initializeDedotSigner();
 
 // We can now interact with the wallet using the similar Polkadot{.js} extension API
-const connectCoongWallet = async () => {
-  const injected = await window['injectedWeb3']['coongwallet'].enable('Awesome Dapp');
+const connectDedotSigner = async () => {
+  const injected = await window['injectedWeb3']['dedot-signer'].enable('Awesome Dapp');
   const connectedAccounts = await injected.accounts.get();
   
   return { injected, connectedAccounts }
 } 
 
-await connectCoongWallet();
+await connectDedotSigner();
 ```
 
 3. Add/remove connected accounts
 ```ts
 // Initilize wallet
-const { injected } = await connectCoongWallet();
+const { injected } = await connectDedotSigner();
 
-// This will open a Coong Wallet window allowing users
+// This will open a Dedot Signer window allowing users
 // to add/remove accounts connecting to dapp
 const updatedAccounts = await injected.accounts.update();
 ```
@@ -104,17 +104,17 @@ const updatedAccounts = await injected.accounts.update();
 4. Sign out & clear up connected accounts
 ```ts
 const signOut = () => {
-  window['injectedWeb3']['coongwallet'].disable();
+  window['injectedWeb3']['dedot-signer'].disable();
 }
 
 signOut();
 ```
 
 Notes:
-- By default, the SDK will connect to Coong Wallet at the offical URL `https://app.coongwallet.io`.
+- By default, the SDK will connect to Dedot Signer at the offical URL `https://app.dedot.dev`.
 - You can also connect to a different URL of the wallet by customizing SDK options:
 ```typescript
-  const sdk = new CoongSdk({ walletUrl: 'https://beta.coongwallet.io' });
+  const sdk = new DedotSignerSdk({ walletUrl: 'https://dedot.dev' });
   await sdk.initialize();  
 ```
 
@@ -126,8 +126,8 @@ After running initialization (via `initialize()`), the SDK will inject `injected
 
 window.injectedWeb3 = {
   // this is the name of this wallet, there could be multiples injected,
-  // each with their own keys, here `coongwallet` is for this wallet
-  'coongwallet': {
+  // each with their own keys, here `dedotsigner` is for this wallet
+  'dedot-signer': {
     // semver of the wallet
     version: '0.1.0',
 
@@ -151,7 +151,7 @@ interface Injected {
   // the interface for Accounts, as detailed below
   readonly accounts: Accounts;
   // the standard Signer interface for the API, as detailed below
-  readonly signer: CoongSigner;
+  readonly signer: DedotSigner;
 }
 
 // exposes accounts
@@ -165,7 +165,7 @@ interface Accounts {
 }
 
 // a signer that communicates with the extension via sendMessage
-interface CoongSigner extends SignerInterface {
+interface DedotSigner extends SignerInterface {
   // signs an extrinsic payload from a serialized form
   signPayload?: (payload: SignerPayloadJSON) => Promise<SignerResult>;
   // signs a raw payload, only the bytes data as supplied
@@ -186,31 +186,31 @@ interface InjectedAccount {
 
 ## Prevent Blocking Popups Issue
 
-Coong SDK uses `window.open` to fire up Coong Wallet windows/popups allowing users to interact with the wallet (e.g: Request to access wallet accounts, request to sign a transaction...), browsers might block this open popup API depending on various reasons. Below is a few practices to help prevent this blocking popups issue from happening.
+Dedot Signer SDK uses `window.open` to fire up Dedot Signer windows/popups allowing users to interact with the wallet (e.g: Request to access wallet accounts, request to sign a transaction...), browsers might block this open popup API depending on various reasons. Below is a few practices to help prevent this blocking popups issue from happening.
 
 1. Call APIs that opens a wallet popup from a user interaction (clicks/touches)
 ```ts
-// initialize Coong Wallet API
-const sdk = new CoongSdk()
+// initialize Dedot Signer API
+const sdk = new DedotSignerSdk()
 await sdk.initialize();
 
-// Trigger connect to Coong Wallet when users hit the connect button
+// Trigger connect to Dedot Signer when users hit the connect button
 const onClickConnectWallet = async () => {
-  await window['injectedWeb3']['coongwallet'].enable('Awesome Dapp');
+  await window['injectedWeb3']['dedot-signer'].enable('Awesome Dapp');
 }
 ```
-2. For actions that might take time (asynchronously) to complete (transfer balance ...), launch a waiting wallet instance (`CoongSdk.newWaitingWalletInstance()`) first thing on user interaction.  
+2. For actions that might take time (asynchronously) to complete (transfer balance ...), launch a waiting wallet instance (`DedotSignerSdk.newWaitingWalletInstance()`) first thing on user interaction.  
 ```ts
 // Connect to Polkadot Network
 const wsProvider = new WsProvider('wss://rpc.polkadot.io');
 const api = await ApiPromise.create({ provider: wsProvider });
 
-// initialize Coong Wallet API
-const sdk = new CoongSdk()
+// initialize Dedot Signer API
+const sdk = new DedotSignerSdk()
 await sdk.initialize();
 
-// connect to Coong Wallet
-const injected = await window['injectedWeb3']['coongwallet'].enable('Awesome Dapp');
+// connect to Dedot Signer
+const injected = await window['injectedWeb3']['dedot-signer'].enable('Awesome Dapp');
 
 const onClickTransferBalance = async () => {
   // Launch a waiting wallet instance first thing when user clicking the Transfer button
@@ -228,7 +228,7 @@ const onClickTransferBalance = async () => {
 await onClickTransferBalance();
 ```
 
-Integration example can be found in the playground dapp source code in [this repository](https://github.com/CoongCrafts/playground-dapp).
+Integration example can be found in the playground dapp source code in [this repository](https://github.com/dedotdev/trydedot).
 
 ## How to run tests
 1. [Set up the development environment](#set-up-development-environment).
@@ -236,7 +236,7 @@ Integration example can be found in the playground dapp source code in [this rep
    
 ## License
 
-[Apache 2.0](https://github.com/CoongCrafts/coong-wallet/blob/main/LICENSE)
+[Apache 2.0](https://github.com/dedotdev/dedot-web-signer/blob/main/LICENSE)
   
   
   

@@ -1,4 +1,4 @@
-import { trimOffUrlProtocol } from '@coong/utils';
+import { trimOffUrlProtocol } from '@dedot/signer-utils';
 
 // Ref: https://gist.github.com/alirezas/c4f9f43e9fe1abba9a4824dd6fc60a55
 export function fadeOut(el: HTMLElement | null) {

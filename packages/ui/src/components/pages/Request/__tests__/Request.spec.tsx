@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccountInfo } from '@coong/keyring/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { initializeKeyring, PASSWORD, render, RouterWrapper, screen } from '__tests__/testUtils';
 import { expect, Mock, vi } from 'vitest';
 import Request from '../index';

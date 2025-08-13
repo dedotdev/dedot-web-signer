@@ -3,10 +3,10 @@ import React, { useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { base64Encode } from '@polkadot/util-crypto';
-import { AccountBackup, QrBackup } from '@coong/keyring/types';
+import { AccountBackup, QrBackup } from '@dedot/signer-keyring/types';
 import { Download } from '@mui/icons-material';
 import { Button } from '@mui/material';
-import CoongLogo from 'assets/images/coong-logo.png';
+import DedotSignerLogo from 'assets/images/dedot-logo.png';
 import FileSaver from 'file-saver';
 import useQrCodeSize from 'hooks/useQrCodeSize';
 import { Props, TransferableObject } from 'types';
@@ -27,10 +27,10 @@ export default function QrCode({ value, object }: QrCodeProps) {
 
   const getFileName = () => {
     if (object === TransferableObject.Wallet) {
-      return `coongwallet_wallet_backup_qrcode_${Date.now()}`;
+      return `dedot_signer_wallet_backup_qrcode_${Date.now()}`;
     } else if (object === TransferableObject.Account) {
       const accountName = (((value as AccountBackup)?.meta?.name as string) || '').toLowerCase().replace(/\s/g, '_');
-      return `coongwallet_account_backup_qrcode_${accountName}_${Date.now()}`;
+      return `dedot_signer_account_backup_qrcode_${accountName}_${Date.now()}`;
     }
   };
 
@@ -62,7 +62,7 @@ export default function QrCode({ value, object }: QrCodeProps) {
     canvasContext.fillText(t<string>('Scan To Import {{object}}', { object: t<string>(object) }), DEFAULT_SIZE / 2, 40);
 
     canvasContext.fillText(
-      'Coong  Wallet - https://coongwallet.io',
+      'Dedot Signer - https://signer.dedot.dev',
       DEFAULT_SIZE / 2,
       DEFAULT_SIZE + startOfQrCodeImage + (isAccountTransfer ? 17 : 13),
       DEFAULT_SIZE - 80,
@@ -96,7 +96,7 @@ export default function QrCode({ value, object }: QrCodeProps) {
   return (
     <div ref={containerRef} className='text-center'>
       <p className='my-4 sm:px-20'>
-        {t<string>('Open Coong Wallet on another device and scan this QR Code to transfer your {{object}}', {
+        {t<string>('Open Dedot Signer on another device and scan this QR Code to transfer your {{object}}', {
           object: t<string>(object.toLowerCase()),
         })}
       </p>
@@ -107,7 +107,7 @@ export default function QrCode({ value, object }: QrCodeProps) {
           includeMargin
           title={t<string>('{{object}} Export QR Code', { object: t<string>(object) })}
           imageSettings={{
-            src: CoongLogo,
+            src: DedotSignerLogo,
             height: 64,
             width: 64,
             excavate: true,

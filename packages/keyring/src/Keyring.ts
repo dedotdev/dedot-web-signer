@@ -4,12 +4,12 @@ import { validateMnemonic } from '@polkadot/util-crypto/mnemonic/bip39';
 import {
   assert,
   assertFalse,
-  CoongError,
+  DedotSignerError,
   ErrorCode,
-  isCoongError,
-  StandardCoongError,
+  isDedotError,
+  StandardDedotSignerError,
   sha256AsHex,
-} from '@coong/utils';
+} from '@dedot/signer-utils';
 import CryptoJS from 'crypto-js';
 import { AccountBackup, AccountInfo, WalletBackup, WalletBackup$Json, WalletQrBackup } from './types';
 
@@ -24,7 +24,7 @@ const DERIVATION_PATH_PREFIX = '//';
  * @name Keyring
  * @description Keyring management for user accounts
  *
- * Coong Wallet is a hierarchical deterministic (HD) wallet following the idea of BIP-32,
+ * Dedot Signer is a hierarchical deterministic (HD) wallet following the idea of BIP-32,
  * which only requires users to back up only one seed phrase upon setting up the wallet.
  *
  * New accounts will be created by deriving from a mnemonic and an accountsIndex number
@@ -83,7 +83,7 @@ export default class Keyring {
 
   async ensureWalletInitialized() {
     if (!(await this.initialized())) {
-      throw new CoongError(ErrorCode.KeyringNotInitialized);
+      throw new DedotSignerError(ErrorCode.KeyringNotInitialized);
     }
   }
 
@@ -141,7 +141,7 @@ export default class Keyring {
 
       return raw;
     } catch (e: any) {
-      throw new CoongError(ErrorCode.PasswordIncorrect);
+      throw new DedotSignerError(ErrorCode.PasswordIncorrect);
     }
   }
 
@@ -244,15 +244,15 @@ export default class Keyring {
     if (password) {
       await this.unlock(password);
     } else {
-      throw new CoongError(ErrorCode.PasswordRequired);
+      throw new DedotSignerError(ErrorCode.PasswordRequired);
     }
 
     if (!name) {
-      throw new CoongError(ErrorCode.AccountNameRequired);
+      throw new DedotSignerError(ErrorCode.AccountNameRequired);
     }
 
     if (await this.existsName(name)) {
-      throw new CoongError(ErrorCode.AccountNameUsed);
+      throw new DedotSignerError(ErrorCode.AccountNameUsed);
     }
 
     let derivationPath = path ?? this.#nextAccountPath();
@@ -288,7 +288,7 @@ export default class Keyring {
     try {
       return this.#keyring.getPair(address);
     } catch (e: any) {
-      throw new CoongError(ErrorCode.KeypairNotFound);
+      throw new DedotSignerError(ErrorCode.KeypairNotFound);
     }
   }
 
@@ -331,7 +331,7 @@ export default class Keyring {
    */
   async renameAccount(address: string, newName: string) {
     if (await this.existsName(newName)) {
-      throw new CoongError(ErrorCode.AccountNameUsed);
+      throw new DedotSignerError(ErrorCode.AccountNameUsed);
     }
 
     const account = await this.getSigningPair(address);
@@ -343,7 +343,7 @@ export default class Keyring {
     const targetAccount = accounts.find(predicate);
 
     if (!targetAccount) {
-      throw new CoongError(ErrorCode.AccountNotFound);
+      throw new DedotSignerError(ErrorCode.AccountNotFound);
     }
 
     return targetAccount;
@@ -360,8 +360,8 @@ export default class Keyring {
 
       return this.#getAccount((one) => one.address === pair.address);
     } catch (e: any) {
-      if (isCoongError(e)) {
-        throw new CoongError(ErrorCode.AccountNotFound);
+      if (isDedotError(e)) {
+        throw new DedotSignerError(ErrorCode.AccountNotFound);
       }
 
       throw e;
@@ -372,7 +372,7 @@ export default class Keyring {
     try {
       return !!(await this.getAccount(address));
     } catch (e: any) {
-      if (isCoongError(e) && e.code === ErrorCode.AccountNotFound) {
+      if (isDedotError(e) && e.code === ErrorCode.AccountNotFound) {
         return false;
       }
 
@@ -398,7 +398,7 @@ export default class Keyring {
     try {
       return !!(await this.getAccountByName(name));
     } catch (e: any) {
-      if (isCoongError(e) && e.code === ErrorCode.AccountNotFound) {
+      if (isDedotError(e) && e.code === ErrorCode.AccountNotFound) {
         return false;
       }
 
@@ -449,13 +449,13 @@ export default class Keyring {
     const { address, meta } = backup;
 
     if (await this.existsAccount(address)) {
-      throw new CoongError(ErrorCode.AccountExisted);
+      throw new DedotSignerError(ErrorCode.AccountExisted);
     }
 
     if (!meta.name) {
-      throw new CoongError(ErrorCode.AccountNameRequired);
+      throw new DedotSignerError(ErrorCode.AccountNameRequired);
     } else if (await this.existsName(meta.name as string)) {
-      throw new CoongError(ErrorCode.AccountNameUsed);
+      throw new DedotSignerError(ErrorCode.AccountNameUsed);
     }
 
     if (this.isExternalAccount(meta.originalHash as string)) {
@@ -505,7 +505,7 @@ export default class Keyring {
 
     const rawMnemonic = await this.#decryptMnemonic(password);
     if (!validateMnemonic(rawMnemonic)) {
-      throw new CoongError(ErrorCode.InvalidMnemonic);
+      throw new DedotSignerError(ErrorCode.InvalidMnemonic);
     }
 
     this.#generateOriginalHash(rawMnemonic);
@@ -535,10 +535,10 @@ export default class Keyring {
     } catch (e: any) {
       await this.reset();
 
-      if (e instanceof StandardCoongError) {
+      if (e instanceof StandardDedotSignerError) {
         throw e;
       } else {
-        throw new StandardCoongError(e.message);
+        throw new StandardDedotSignerError(e.message);
       }
     }
   }
@@ -558,10 +558,10 @@ export default class Keyring {
     } catch (e: any) {
       await this.reset();
 
-      if (e instanceof StandardCoongError) {
+      if (e instanceof StandardDedotSignerError) {
         throw e;
       } else {
-        throw new StandardCoongError(e.message);
+        throw new StandardDedotSignerError(e.message);
       }
     }
   }
@@ -576,7 +576,7 @@ export default class Keyring {
       return pair;
     } catch (e: any) {
       if (e.message === 'Unable to decode using the supplied passphrase') {
-        throw new CoongError(ErrorCode.PasswordIncorrect);
+        throw new DedotSignerError(ErrorCode.PasswordIncorrect);
       }
 
       throw e;

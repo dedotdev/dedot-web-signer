@@ -1,5 +1,5 @@
 import { waitFor } from '@testing-library/react';
-import { WalletState } from '@coong/base';
+import { WalletState } from '@dedot/signer-base';
 import {
   UserEvent,
   initializeKeyring,

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { RequestAppRequestAccess } from '@coong/base/types';
+import { RequestAppRequestAccess } from '@dedot/signer-base/types';
 import { Button } from '@mui/material';
 import AccountsSelection from 'components/pages/Request/RequestAccess/AccountsSelection';
 import SetupWalletButton from 'components/pages/Request/RequestAccess/SetupWalletButton';
@@ -41,9 +41,11 @@ const RequestAccess: FC<RequestProps> = ({ className = '', message }) => {
     <div className={className}>
       <h2 className='text-center'>{t<string>('Wallet Access Request')}</h2>
       <p className='text-center'>
-        <Trans values={{ appName: requestBody.appName, origin: origin }} shouldUnescape>
-          An application, self-identifying as request app name is requesting access your wallet from origin.
-        </Trans>
+        <Trans 
+          i18nKey="An application, self-identifying as request app name is requesting access your wallet from origin."
+          values={{ appName: requestBody.appName, origin: origin }} 
+          shouldUnescape
+        />
       </p>
 
       {seedReady ? (
@@ -65,7 +67,7 @@ const RequestAccess: FC<RequestProps> = ({ className = '', message }) => {
         </div>
       ) : (
         <div>
-          <h6 className='text-center mb-4'>{t('Set up your Coong Wallet now to connect')}</h6>
+          <h6 className='text-center mb-4'>{t('Set up your Dedot Signer now to connect')}</h6>
           <div className='flex gap-4'>
             <Button size='large' variant='text' className='xs:w-2/5' color='warning' onClick={rejectAccess}>
               {t<string>('Cancel')}

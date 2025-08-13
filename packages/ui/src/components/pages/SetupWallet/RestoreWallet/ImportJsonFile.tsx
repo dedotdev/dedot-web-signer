@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { WalletBackup } from '@coong/keyring/types';
+import { WalletBackup } from '@dedot/signer-keyring/types';
 import TransferWalletBackup from 'components/pages/SetupWallet/RestoreWallet/TransferWalletBackup';
 import JsonFileReader from 'components/shared/import/JsonFileReader';
 import { useWalletState } from 'providers/WalletStateProvider';

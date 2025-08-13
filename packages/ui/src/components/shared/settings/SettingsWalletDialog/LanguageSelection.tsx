@@ -15,9 +15,11 @@ const LanguageOptions: { [key in Language]: string } = {
 
 const LanguageSelection: FC<Props> = () => {
   const dispatch = useDispatch();
+  const translation = useTranslation();
   const {
-    i18n: { resolvedLanguage },
-  } = useTranslation();
+    i18n: { language: resolvedLanguage },
+  } = translation;
+
   const { language } = useSelector((state: RootState) => state.settings);
   const [loading, setLoading] = useState(resolvedLanguage !== language);
   const { open, anchorEl, doOpen, doClose } = useMenuDropdown();

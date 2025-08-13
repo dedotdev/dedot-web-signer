@@ -1,13 +1,13 @@
 {
-  "name": "@coong/ui",
+  "name": "@dedot/signer-ui",
   "private": true,
   "version": "0.0.1",
-  "author": "Thang X. Vu <thang@coongwallet.io>",
-  "homepage": "https://github.com/CoongCrafts/coong-wallet/tree/main/packages/ui#readme",
+  "author": "Thang X. Vu <thang@dedot.dev>",
+  "homepage": "https://github.com/dedotdev/dedot-web-signer/tree/main/packages/ui#readme",
   "repository": {
     "directory": "packages/ui",
     "type": "git",
-    "url": "https://github.com/CoongCrafts/coong-wallet.git"
+    "url": "https://github.com/dedotdev/dedot-web-signer.git"
   },
   "scripts": {
     "start": "vite --port 3030 --host 0.0.0.0",
@@ -17,9 +17,9 @@
     "test": "npx vitest --watch=false"
   },
   "dependencies": {
-    "@coong/base": "*",
-    "@coong/keyring": "*",
-    "@coong/utils": "*",
+    "@dedot/signer-base": "*",
+    "@dedot/signer-keyring": "*",
+    "@dedot/signer-utils": "*",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",

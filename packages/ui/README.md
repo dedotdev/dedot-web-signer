@@ -1,3 +1,3 @@
-# @coong/ui
+# @dedot/signer-ui
 
-Coong Wallet application 
+Dedot Signer Application 

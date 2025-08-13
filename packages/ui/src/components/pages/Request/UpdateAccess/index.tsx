@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { assert } from '@coong/utils';
+import { assert } from '@dedot/signer-utils';
 import { Button } from '@mui/material';
 import AccountsSelection from 'components/pages/Request/RequestAccess/AccountsSelection';
 import useSetSelectedAccounts from 'components/pages/Request/RequestAccess/useSetSelectedAccounts';

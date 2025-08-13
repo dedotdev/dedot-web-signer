@@ -1,8 +1,8 @@
 import { createContext, FC, useContext, useMemo } from 'react';
-import { isMessageId, TabHandler, WalletState } from '@coong/base';
-import { RequestName, WalletRequestMessage, WalletResponse } from '@coong/base/types';
-import Keyring from '@coong/keyring';
-import { CoongError, ErrorCode } from '@coong/utils';
+import { isMessageId, TabHandler, WalletState } from '@dedot/signer-base';
+import { RequestName, WalletRequestMessage, WalletResponse } from '@dedot/signer-base/types';
+import Keyring from '@dedot/signer-keyring';
+import { DedotSignerError, ErrorCode } from '@dedot/signer-utils';
 import { Props } from 'types';
 
 export interface HandleWalletRequest {
@@ -42,7 +42,7 @@ export const WalletStateProvider: FC<WalletStateProviderProps> = ({ children, in
       return new TabHandler(walletState).handle(message);
     }
 
-    throw new CoongError(ErrorCode.UnknownRequest);
+    throw new DedotSignerError(ErrorCode.UnknownRequest);
   }
 
   return (

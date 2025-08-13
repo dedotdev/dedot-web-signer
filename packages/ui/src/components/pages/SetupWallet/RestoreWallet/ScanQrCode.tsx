@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { u8aToString } from '@polkadot/util';
 import { base64Decode } from '@polkadot/util-crypto';
-import { WalletQrBackup } from '@coong/keyring/types';
+import { WalletQrBackup } from '@dedot/signer-keyring/types';
 import TransferWalletBackup from 'components/pages/SetupWallet/RestoreWallet/TransferWalletBackup';
 import QrCodeReader from 'components/shared/import/QrCodeReader';
 import { useWalletState } from 'providers/WalletStateProvider';

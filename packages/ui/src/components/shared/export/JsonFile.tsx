@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { AccountBackup, JsonBackup } from '@coong/keyring/types';
+import { AccountBackup, JsonBackup } from '@dedot/signer-keyring/types';
 import { Download } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import FileSaver from 'file-saver';
@@ -16,10 +16,10 @@ export default function JsonFile({ value, object }: JsonFileProps): JSX.Element 
 
   const getFileName = () => {
     if (object === TransferableObject.Wallet) {
-      return `coongwallet_wallet_backup_${Date.now()}.json`;
+      return `dedot_signer_wallet_backup_${Date.now()}.json`;
     } else if (object === TransferableObject.Account) {
       const accountName = (((value as AccountBackup)?.meta?.name as string) || '').toLowerCase().replace(/\s/g, '_');
-      return `coongwallet_account_backup_${accountName}_${Date.now()}.json`;
+      return `dedot_signer_account_backup_${accountName}_${Date.now()}.json`;
     }
   };
 
@@ -32,7 +32,7 @@ export default function JsonFile({ value, object }: JsonFileProps): JSX.Element 
     <div className='text-center'>
       <p className='mt-4 sm:px-20'>
         {t<string>(
-          `Export this {{object}} to a JSON file and import it back to Coong Wallet on this or other devices later`,
+          `Export this {{object}} to a JSON file and import it back to Dedot Signer on this or other devices later`,
           { object: t<string>(object.toLowerCase()) },
         )}
       </p>

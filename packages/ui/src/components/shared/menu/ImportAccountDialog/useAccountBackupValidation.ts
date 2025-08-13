@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAsync } from 'react-use';
-import { AccountBackup } from '@coong/keyring/types';
+import { AccountBackup } from '@dedot/signer-keyring/types';
 import { useWalletState } from 'providers/WalletStateProvider';
 
 interface Conflict {

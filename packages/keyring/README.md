@@ -1,3 +1,3 @@
-# @coong/keyring
+# @dedot/signer-keyring
 
-Keyring for Coong Wallet
+Keyring for Dedot Signer

@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
-import { isWalletRequest, newWalletErrorResponse, newWalletResponse, newWalletSignal } from '@coong/base';
-import { WalletRequestMessage, WalletResponse, WalletSignal } from '@coong/base/types';
-import { CoongError, ErrorCode, getErrorMessage } from '@coong/utils';
+import { isWalletRequest, newWalletErrorResponse, newWalletResponse, newWalletSignal } from '@dedot/signer-base';
+import { WalletRequestMessage, WalletResponse, WalletSignal } from '@dedot/signer-base/types';
+import { DedotSignerError, ErrorCode, getErrorMessage } from '@dedot/signer-utils';
 import InvalidRequest from 'components/pages/Request/InvalidRequest';
 import RequestContent from 'components/pages/Request/RequestContent';
 import { useWalletState } from 'providers/WalletStateProvider';
@@ -18,7 +18,7 @@ const Request: FC<Props> = ({ className = '' }) => {
 
   if (!isChildTabOrPopup()) {
     console.error('This page should not be open directly!');
-    throw new CoongError(ErrorCode.UnknownRequestOrigin);
+    throw new DedotSignerError(ErrorCode.UnknownRequestOrigin);
   }
 
   const handleRequest = (message: WalletRequestMessage, eventOrigin?: string) => {
@@ -48,7 +48,7 @@ const Request: FC<Props> = ({ className = '' }) => {
     const message = JSON.parse(rawMessage) as WalletRequestMessage;
 
     if (!isWalletRequest(message)) {
-      throw new CoongError(ErrorCode.InvalidMessageFormat);
+      throw new DedotSignerError(ErrorCode.InvalidMessageFormat);
     }
 
     handleRequest(message);

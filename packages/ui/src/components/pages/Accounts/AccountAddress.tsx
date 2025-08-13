@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useUpdateEffect } from 'react-use';
-import { shortenAddress } from '@coong/utils';
+import { shortenAddress } from '@dedot/signer-utils';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { styled, Theme, useMediaQuery } from '@mui/material';
 import CopyAddressTooltip from 'components/shared/CopyAddressTooltip';

@@ -21,9 +21,9 @@ describe('UnlockWallet', () => {
   });
 
   it('should show error message on submitting incorrect password', async () => {
-    await initializeKeyring();
+    const keyring = await initializeKeyring();
 
-    render(<UnlockWallet />);
+    render(<UnlockWallet />, { keyring });
     const passwordField = await screen.findByLabelText('Wallet password');
     await user.type(passwordField, 'incorrect-password');
 

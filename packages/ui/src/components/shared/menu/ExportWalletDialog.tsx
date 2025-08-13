@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { CompactAccountInfo, DerivationPath, WalletBackup, WalletQrBackup } from '@coong/keyring/types';
+import { CompactAccountInfo, DerivationPath, WalletBackup, WalletQrBackup } from '@dedot/signer-keyring/types';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, DialogContent, DialogContentText, Tab } from '@mui/material';
 import DialogTitle from 'components/shared/DialogTitle';

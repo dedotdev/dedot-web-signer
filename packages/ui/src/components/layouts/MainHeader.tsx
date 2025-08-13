@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Container, styled } from '@mui/material';
 import LockWalletButton from 'components/shared/LockWalletButton';
 import ResetWalletButton from 'components/shared/ResetWalletButton';
-import CoongTextLogo from 'components/shared/misc/CoongTextLogo';
+import DedotSignerTextLogo from 'components/shared/misc/DedotTextLogo';
 import SettingsWalletButton from 'components/shared/settings/SettingsWalletButton';
 import { Props } from 'types';
 
@@ -15,7 +15,7 @@ const MainHeader: FC<MainLayoutProps> = ({ className = '', headerActions }) => {
     <header className={`${className} main-header border-b border-black/10 dark:bg-black/30 dark:border-white/15`}>
       <Container maxWidth='sm'>
         <div className='main-header__inner'>
-          <CoongTextLogo />
+          <DedotSignerTextLogo />
           {headerActions && (
             <div className='main-header__actions'>
               {!import.meta.env.PROD && <ResetWalletButton />}

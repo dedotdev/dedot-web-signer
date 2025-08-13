@@ -1,7 +1,7 @@
 import { Identicon } from '@polkadot/react-identicon';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { shortenAddress } from '@coong/utils';
+import { shortenAddress } from '@dedot/signer-utils';
 import { Check } from '@mui/icons-material';
 import { alpha, styled } from '@mui/material';
 import CopyAddressTooltip from 'components/shared/CopyAddressTooltip';

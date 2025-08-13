@@ -1,13 +1,13 @@
 import { InjectedAccount, Unsubcall } from '@polkadot/extension-inject/types';
-import { assert } from '@coong/utils';
-import ConnectedAccounts from '../ConnectedAccounts';
-import CoongSdk from '../CoongSdk';
+import { assert } from '@dedot/signer-utils';
+import { ConnectedAccounts } from '../ConnectedAccounts';
+import { DedotSignerSdk } from '../DedotSignerSdk';
 import { UpdatableInjectedAccounts } from '../types';
 
-export default class Accounts implements UpdatableInjectedAccounts {
-  #sdk: CoongSdk;
+export class Accounts implements UpdatableInjectedAccounts {
+  #sdk: DedotSignerSdk;
 
-  constructor(sdk: CoongSdk) {
+  constructor(sdk: DedotSignerSdk) {
     this.#sdk = sdk;
   }
 

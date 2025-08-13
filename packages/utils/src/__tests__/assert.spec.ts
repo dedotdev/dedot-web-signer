@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { assert, assertFalse } from '../assert';
-import { CoongError, ErrorCode, StandardCoongError } from '../errors';
+import { DedotSignerError, ErrorCode, StandardDedotSignerError } from '../errors';
 
 describe('assert', () => {
-  it('should throw CoongError', function () {
+  it('should throw DedotError', function () {
     expect(() => {
       assert(false, ErrorCode.InternalError);
-    }).toThrowError(CoongError);
+    }).toThrowError(DedotSignerError);
   });
 
-  it('should throw CoongStandardError', function () {
+  it('should throw DedotSignerStandardError', function () {
     expect(() => {
       assert(false, 'Random message');
-    }).toThrowError(StandardCoongError);
+    }).toThrowError(StandardDedotSignerError);
   });
 
   it('should be silent', function () {
@@ -21,16 +21,16 @@ describe('assert', () => {
 });
 
 describe('assertFalse', () => {
-  it('should throw CoongError', function () {
+  it('should throw DedotError', function () {
     expect(() => {
       assertFalse(true, ErrorCode.InternalError);
-    }).toThrowError(CoongError);
+    }).toThrowError(DedotSignerError);
   });
 
-  it('should throw CoongStandardError', function () {
+  it('should throw DedotSignerStandardError', function () {
     expect(() => {
       assertFalse(true, 'Random message');
-    }).toThrowError(StandardCoongError);
+    }).toThrowError(StandardDedotSignerError);
   });
 
   it('should be silent', function () {

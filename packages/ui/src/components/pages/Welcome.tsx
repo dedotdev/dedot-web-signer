@@ -24,13 +24,13 @@ const Welcome: React.FC<WelcomeProps> = ({ className = '', onCreateNewWallet, on
   return (
     <div className={`${className} mt-8 mb-16 mx-auto text-center`}>
       <div className='welcome'>
-        <h1>{t<string>('Welcome to Coong Wallet')}</h1>
+        <h1>{t<string>('Welcome to Dedot Signer')}</h1>
         <p className='text-2xl'>
-          <Trans>A multichain crypto wallet for Polkadot & Kusama ecosystem</Trans>
+          <Trans>A multi-chain crypto wallet & signer for Polkadot</Trans>
         </p>
       </div>
       <div className='mt-8'>
-        <h4 className='mb-4'>{t<string>('Set up your Coong Wallet now')}</h4>
+        <h4 className='mb-4'>{t<string>('Set up your Dedot Signer now')}</h4>
 
         <div className='flex flex-col gap-4 items-center'>
           <Button size='large' className='min-w-[270px]' onClick={doCreateNewWallet}>

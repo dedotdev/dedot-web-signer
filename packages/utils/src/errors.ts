@@ -20,9 +20,9 @@ export enum ErrorCode {
 
 export const ErrorCodes = Object.values(ErrorCode) as string[];
 
-export class StandardCoongError extends Error {}
+export class StandardDedotSignerError extends Error {}
 
-export class CoongError extends StandardCoongError {
+export class DedotSignerError extends StandardDedotSignerError {
   code: ErrorCode;
   constructor(errorCode: ErrorCode, message?: string) {
     super(message);
@@ -37,17 +37,17 @@ export class CoongError extends StandardCoongError {
 export const getErrorMessage = (error: Error) => {
   if (error instanceof SyntaxError) {
     return ErrorCode.InvalidMessageFormat;
-  } else if (error instanceof StandardCoongError) {
+  } else if (error instanceof StandardDedotSignerError) {
     return error.message;
   }
 
   return ErrorCode.InternalError;
 };
 
-export const isCoongError = (error: Error) => {
-  return error instanceof CoongError;
+export const isDedotError = (error: Error) => {
+  return error instanceof DedotSignerError;
 };
 
-export const isStandardCoongError = (error: Error) => {
-  return error instanceof StandardCoongError;
+export const isStandardDedotError = (error: Error) => {
+  return error instanceof StandardDedotSignerError;
 };

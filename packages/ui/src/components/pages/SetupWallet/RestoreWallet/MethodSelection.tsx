@@ -19,13 +19,13 @@ const MethodInfo = [
     method: RestoreWalletMethod.QrCode,
     icon: <QrCode />,
     primary: 'QR Code',
-    secondary: 'Scan QR Code from Coong Wallet on a different device',
+    secondary: 'Scan QR Code from Dedot Signer on a different device',
   },
   {
     method: RestoreWalletMethod.JsonFile,
     icon: <InsertDriveFileIcon />,
     primary: 'JSON File',
-    secondary: 'Import JSON backup file exported from Coong Wallet',
+    secondary: 'Import JSON backup file exported from Dedot Signer',
   },
 ];
 

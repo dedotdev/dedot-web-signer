@@ -1,5 +1,5 @@
 import { screen, waitFor } from '@testing-library/react';
-import { WalletState } from '@coong/base';
+import { WalletState } from '@dedot/signer-base';
 import { initializeKeyring, newUser, PASSWORD, render, setupAuthorizedApps, UserEvent } from '__tests__/testUtils';
 import DappAccessDetailsDialog from '../DappAccessDetailsDialog';
 import RemoveDappAccessDialog from '../RemoveDappAccessDialog';

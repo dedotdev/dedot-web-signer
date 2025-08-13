@@ -1,14 +1,14 @@
 {
-  "name": "coong-wallet",
+  "name": "dedot-web-signer",
   "private": true,
-  "description": "A website-based multi-chain wallet for Polkadot & Kusama ecosystem",
-  "author": "Thang X. Vu <thang@coongwallet.io>",
+  "description": "A website-based multi-chain wallet & signer for Polkadot",
+  "author": "Thang X. Vu <thang@dedot.dev>",
   "packageManager": "yarn@3.4.1",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "start": "yarn workspace @coong/ui start",
+    "start": "yarn workspace @dedot/signer-ui start",
     "build": "yarn clean && npx lerna run build",
     "clean": "npx lerna run clean",
     "test": "npx lerna run --no-bail --verbose test",

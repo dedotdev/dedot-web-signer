@@ -51,7 +51,7 @@ export default function ForgotPasswordButton() {
         <DialogContent>
           <DialogContentText className='mb-4'>
             {t<string>(
-              'Coong Wallet cannot recover wallet password for you. If you have trouble unlocking your wallet, you will need to reset the wallet. Make sure you have your secret recovery phrase before proceed further.',
+              'Dedot Signer cannot recover wallet password for you. If you have trouble unlocking your wallet, you will need to reset the wallet. Make sure you have your secret recovery phrase before proceed further.',
             )}
           </DialogContentText>
           <DialogContentText className='mb-4'>

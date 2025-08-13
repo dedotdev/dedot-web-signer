@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useAsync } from 'react-use';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { encodeAddress } from '@polkadot/util-crypto';
-import { WalletRequestWithResolver } from '@coong/base/types';
+import { WalletRequestWithResolver } from '@dedot/signer-base/types';
 import useThrowError from 'hooks/useThrowError';
 import { useWalletState } from 'providers/WalletStateProvider';
 import { RootState } from 'redux/store';

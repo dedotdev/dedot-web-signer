@@ -1,6 +1,6 @@
-import { isWalletSignal } from '@coong/base';
-import { WalletInfo, WalletSignalMessage } from '@coong/base/types';
-import { StandardCoongError } from '@coong/utils';
+import { isWalletSignal } from '@dedot/signer-base';
+import { WalletInfo, WalletSignalMessage } from '@dedot/signer-base/types';
+import { StandardDedotSignerError } from '@dedot/signer-utils';
 
 export default abstract class WalletInstance {
   public readonly walletUrl: string;
@@ -42,7 +42,7 @@ export default abstract class WalletInstance {
   }
 
   protected onSignal(message: WalletSignalMessage) {
-    throw new StandardCoongError('Implement this method');
+    throw new StandardDedotSignerError('Implement this method');
   }
 
   destroy() {

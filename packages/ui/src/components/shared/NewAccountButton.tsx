@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useUpdateEffect } from 'react-use';
-import { AccountInfo } from '@coong/keyring/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { Add } from '@mui/icons-material';
 import { Box, Button, Dialog, DialogContent, DialogContentText, IconButton, TextField } from '@mui/material';
 import DialogTitle from 'components/shared/DialogTitle';

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { AccountInfo } from '@coong/keyring/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 
 export interface Props {
   className?: string;

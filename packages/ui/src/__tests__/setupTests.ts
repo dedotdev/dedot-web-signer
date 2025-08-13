@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import { configure } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
 configure({
   asyncUtilTimeout: 5_000,
@@ -20,4 +21,7 @@ beforeAll(() => {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
   });
+
+  // Mock scrollIntoView for JSDOM
+  Element.prototype.scrollIntoView = vi.fn();
 });

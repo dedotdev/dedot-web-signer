@@ -1,5 +1,5 @@
 import { generateMnemonic } from '@polkadot/util-crypto/mnemonic/bip39';
-import Keyring from '@coong/keyring';
+import Keyring from '@dedot/signer-keyring';
 import WalletState, { AUTHORIZED_ACCOUNTS_KEY, AuthorizedApps } from '../WalletState';
 
 export const PASSWORD = 'supersecretpassword';

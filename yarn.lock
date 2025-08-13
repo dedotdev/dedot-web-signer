@@ -356,12 +356,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@coong/base@*, @coong/base@^0.0.23, @coong/base@workspace:packages/base":
+"@dedot/signer-base@*, @dedot/signer-base@^0.0.23, @dedot/signer-base@workspace:packages/base":
   version: 0.0.0-use.local
-  resolution: "@coong/base@workspace:packages/base"
+  resolution: "@dedot/signer-base@workspace:packages/base"
   dependencies:
-    "@coong/keyring": ^0.0.23
-    "@coong/utils": ^0.0.23
+    "@dedot/signer-keyring": ^0.0.23
+    "@dedot/signer-utils": ^0.0.23
     "@polkadot/extension-inject": ^0.61.5
     "@polkadot/networks": ^13.5.5
     "@polkadot/types": ^16.4.3
@@ -372,11 +372,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coong/keyring@*, @coong/keyring@^0.0.23, @coong/keyring@workspace:packages/keyring":
+"@dedot/signer-keyring@*, @dedot/signer-keyring@^0.0.23, @dedot/signer-keyring@workspace:packages/keyring":
   version: 0.0.0-use.local
-  resolution: "@coong/keyring@workspace:packages/keyring"
+  resolution: "@dedot/signer-keyring@workspace:packages/keyring"
   dependencies:
-    "@coong/utils": ^0.0.23
+    "@dedot/signer-utils": ^0.0.23
     "@polkadot/keyring": ^13.5.5
     "@polkadot/ui-keyring": ^3.15.3
     "@polkadot/util-crypto": ^13.5.5
@@ -385,25 +385,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coong/sdk@workspace:packages/sdk":
+"@dedot/signer-sdk@workspace:packages/sdk":
   version: 0.0.0-use.local
-  resolution: "@coong/sdk@workspace:packages/sdk"
+  resolution: "@dedot/signer-sdk@workspace:packages/sdk"
   dependencies:
-    "@coong/base": ^0.0.23
-    "@coong/utils": ^0.0.23
+    "@dedot/signer-base": ^0.0.23
+    "@dedot/signer-utils": ^0.0.23
     "@polkadot/api": ^16.4.3
     "@polkadot/extension-inject": ^0.61.5
     rxjs: ^7.8.0
   languageName: unknown
   linkType: soft
 
-"@coong/ui@workspace:packages/ui":
+"@dedot/signer-ui@workspace:packages/ui":
   version: 0.0.0-use.local
-  resolution: "@coong/ui@workspace:packages/ui"
+  resolution: "@dedot/signer-ui@workspace:packages/ui"
   dependencies:
-    "@coong/base": "*"
-    "@coong/keyring": "*"
-    "@coong/utils": "*"
+    "@dedot/signer-base": "*"
+    "@dedot/signer-keyring": "*"
+    "@dedot/signer-utils": "*"
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     "@mui/icons-material": ^5.11.0
@@ -446,9 +446,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@coong/utils@*, @coong/utils@^0.0.23, @coong/utils@workspace:packages/utils":
+"@dedot/signer-utils@*, @dedot/signer-utils@^0.0.23, @dedot/signer-utils@workspace:packages/utils":
   version: 0.0.0-use.local
-  resolution: "@coong/utils@workspace:packages/utils"
+  resolution: "@dedot/signer-utils@workspace:packages/utils"
   languageName: unknown
   linkType: soft
 
@@ -3845,23 +3845,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"coong-wallet@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "coong-wallet@workspace:."
-  dependencies:
-    "@trivago/prettier-plugin-sort-imports": ^4.1.1
-    husky: ^8.0.3
-    jsdom: ^21.1.0
-    lerna: ^6.5.1
-    prettier: ^2.8.4
-    prettier-plugin-organize-imports: ^3.2.2
-    typescript: ^4.9.3
-    vite: ^4.0.0
-    vite-tsconfig-paths: ^4.0.3
-    vitest: ^0.29.2
-  languageName: unknown
-  linkType: soft
-
 "copy-to-clipboard@npm:^3.3.1":
   version: 3.3.3
   resolution: "copy-to-clipboard@npm:3.3.3"
@@ -4102,6 +4085,23 @@ __metadata:
   checksum: 87de191050d9a40dd70cad01159a0bcf05ecb59750951242070b6abf9569088684880d00ba92a955b4058804f16eeaf91d604f283929b4f614d181cd7ae633d2
   languageName: node
   linkType: hard
+
+"dedot-web-signer@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "dedot-web-signer@workspace:."
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": ^4.1.1
+    husky: ^8.0.3
+    jsdom: ^21.1.0
+    lerna: ^6.5.1
+    prettier: ^2.8.4
+    prettier-plugin-organize-imports: ^3.2.2
+    typescript: ^4.9.3
+    vite: ^4.0.0
+    vite-tsconfig-paths: ^4.0.3
+    vitest: ^0.29.2
+  languageName: unknown
+  linkType: soft
 
 "deep-eql@npm:^4.1.2":
   version: 4.1.3

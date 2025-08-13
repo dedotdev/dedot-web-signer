@@ -1,4 +1,4 @@
-import { CoongError, ErrorCode, ErrorCodes } from './errors';
+import { DedotSignerError, ErrorCode, ErrorCodes } from './errors';
 
 export function assert(condition: unknown, message?: string) {
   if (condition) {
@@ -6,9 +6,9 @@ export function assert(condition: unknown, message?: string) {
   }
 
   if (message && ErrorCodes.includes(message)) {
-    throw new CoongError(message as ErrorCode);
+    throw new DedotSignerError(message as ErrorCode);
   } else {
-    throw new CoongError(ErrorCode.InternalError, message);
+    throw new DedotSignerError(ErrorCode.InternalError, message);
   }
 }
 
