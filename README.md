@@ -1,5 +1,5 @@
 > [!NOTE]
-> We're in the process of rebranding Dedot Signer to Dedot Signer, information in this repo might be conflicted or confusing.
+> We're in the process of rebranding Coong Wallet to Dedot Signer, information in this repo might be conflicted or confusing.
 
 <br/>
 <p align="center">
@@ -11,7 +11,7 @@ Dedot Signer
 </h1>
 
 <p align="center">
-A website-based multi-chain crypto wallet for <a href="https://polkadot.network/">Polkadot</a> & <a href="https://kusama.network/">Kusama</a> ecosystem
+A website-based multi-chain crypto wallet & signer for <a href="https://polkadot.network/">Polkadot</a>
 <p>
 
 <p align="center">
