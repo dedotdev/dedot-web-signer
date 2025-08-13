@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CoongError, ErrorCode } from '@coong/utils';
+import { DedotSignerError, ErrorCode } from '@dedot/signer-utils';
 import { CircularProgress } from '@mui/material';
 import RequestAccess from 'components/pages/Request/RequestAccess';
 import RequestSignRawMessage from 'components/pages/Request/RequestSigning/RequestSignRawMessage';
@@ -31,7 +31,7 @@ const RequestContent: FC<Props> = () => {
     return <RequestSignRawMessage message={message!} />;
   }
 
-  throw new CoongError(ErrorCode.UnknownRequest);
+  throw new DedotSignerError(ErrorCode.UnknownRequest);
 };
 
 export default RequestContent;

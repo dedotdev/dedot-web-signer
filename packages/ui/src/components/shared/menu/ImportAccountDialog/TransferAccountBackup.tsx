@@ -2,7 +2,7 @@ import { FormEvent, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useToggle } from 'react-use';
-import { AccountBackup } from '@coong/keyring/types';
+import { AccountBackup } from '@dedot/signer-keyring/types';
 import { Alert, Button, DialogContentText, TextField } from '@mui/material';
 import AccountCard from 'components/pages/Accounts/AccountCard';
 import VerifyingPasswordForm from 'components/shared/forms/VerifyingPasswordForm';

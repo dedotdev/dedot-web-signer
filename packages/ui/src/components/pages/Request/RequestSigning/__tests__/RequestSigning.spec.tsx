@@ -1,8 +1,8 @@
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
-import { defaultNetwork, newWalletErrorResponse, newWalletRequest } from '@coong/base';
-import { WalletRequestMessage } from '@coong/base/types';
-import Keyring from '@coong/keyring';
-import { AccountInfo } from '@coong/keyring/types';
+import { defaultNetwork, newWalletErrorResponse, newWalletRequest } from '@dedot/signer-base';
+import { WalletRequestMessage } from '@dedot/signer-base/types';
+import Keyring from '@dedot/signer-keyring';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { SpyInstance } from '@vitest/spy';
 import {
   initializeKeyring,

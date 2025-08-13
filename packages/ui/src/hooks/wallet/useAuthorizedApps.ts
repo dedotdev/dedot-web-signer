@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffectOnce } from 'react-use';
-import { AppInfo } from '@coong/base/requests/WalletState';
+import { AppInfo } from '@dedot/signer-base/requests/WalletState';
 import { useWalletState } from 'providers/WalletStateProvider';
 
 export default function useAuthorizedApps() {

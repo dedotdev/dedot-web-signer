@@ -2,7 +2,7 @@ import type { InjectedAccount } from '@polkadot/extension-inject/types';
 import type { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import type { HexString } from '@polkadot/util/types';
 
-export type MessageId = `coong/${string}`;
+export type MessageId = `dedot-signer/${string}`;
 
 export interface RequestAppRequestAccess {
   appName: string;

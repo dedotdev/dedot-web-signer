@@ -1,7 +1,7 @@
 import { InjectedAccount } from '@polkadot/extension-inject/types';
-import { assert, trimOffUrlProtocol } from '@coong/utils';
+import { assert, trimOffUrlProtocol } from '@dedot/signer-utils';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import CoongSdk from './CoongSdk';
+import { DedotSignerSdk } from './DedotSignerSdk';
 
 const CONNECTED_ACCOUNTS_KEY = 'CONNECTED_ACCOUNTS';
 
@@ -9,12 +9,12 @@ const CONNECTED_ACCOUNTS_KEY = 'CONNECTED_ACCOUNTS';
  * @name ConnectedAccounts
  * @description Store & manage authorized/connected accounts from wallet for dapps
  */
-export default class ConnectedAccounts {
-  #sdk: CoongSdk;
+export class ConnectedAccounts {
+  #sdk: DedotSignerSdk;
   #accounts: BehaviorSubject<InjectedAccount[]>;
 
-  constructor(sdk: CoongSdk) {
-    assert(sdk, 'Coong SDK is required');
+  constructor(sdk: DedotSignerSdk) {
+    assert(sdk, 'DedotSignerSdk is required');
     this.#sdk = sdk;
 
     this.#accounts = new BehaviorSubject<InjectedAccount[]>(this.#loadFromStorage());

@@ -1,4 +1,4 @@
-import { defaultNetwork } from '@coong/base';
+import { defaultNetwork } from '@dedot/signer-base';
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 export interface AppState {

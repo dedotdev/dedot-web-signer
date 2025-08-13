@@ -1,4 +1,4 @@
-import { defaultNetwork } from '@coong/base';
+import { defaultNetwork } from '@dedot/signer-base';
 import { PreloadedState } from '@reduxjs/toolkit';
 import { initializeKeyring, newUser, PASSWORD, render, RouterWrapper, screen } from '__tests__/testUtils';
 import { AutoLockTimerOptions } from 'components/shared/settings/SettingsWalletDialog/AutoLockSelection';
@@ -24,7 +24,7 @@ describe('GuardScreen', () => {
           <GuardScreen />
         </RouterWrapper>,
       );
-      expect(screen.queryByText('Welcome to Coong Wallet')).toBeInTheDocument();
+      expect(screen.queryByText('Welcome to Dedot Signer')).toBeInTheDocument();
     });
   });
 
@@ -54,8 +54,8 @@ describe('GuardScreen', () => {
       expect(resetWalletButton).toBeEnabled();
       await user.click(resetWalletButton);
 
-      expect(await screen.findByText(/Welcome to Coong Wallet/)).toBeInTheDocument();
-      expect(await screen.findByText(/Set up your Coong Wallet now/)).toBeInTheDocument();
+      expect(await screen.findByText(/Welcome to Dedot Signer/)).toBeInTheDocument();
+      expect(await screen.findByText(/Set up your Dedot Signer now/)).toBeInTheDocument();
     });
 
     it('should go to Outlet content after unlocking the wallet', async () => {

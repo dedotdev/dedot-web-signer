@@ -1,13 +1,13 @@
 {
-  "name": "@coong/keyring",
+  "name": "@dedot/signer-keyring",
   "version": "0.0.23",
-  "description": "Keyring for Coong Wallet",
-  "author": "Thang X. Vu <thang@coongwallet.io>",
-  "homepage": "https://github.com/CoongCrafts/coong-wallet/tree/main/packages/keyring#readme",
+  "description": "Keyring for Dedot Signer",
+  "author": "Thang X. Vu <thang@dedot.dev>",
+  "homepage": "https://github.com/dedotdev/dedot-web-signer/tree/main/packages/keyring#readme",
   "repository": {
     "directory": "packages/keyring",
     "type": "git",
-    "url": "https://github.com/CoongCrafts/coong-wallet.git"
+    "url": "https://github.com/dedotdev/dedot-web-signer.git"
   },
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
@@ -16,7 +16,7 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@coong/utils": "^0.0.23",
+    "@dedot/signer-utils": "^0.0.23",
     "@polkadot/ui-keyring": "^3.15.3",
     "crypto-js": "^4.2.0"
   },

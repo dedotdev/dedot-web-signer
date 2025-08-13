@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { encodeAddress } from '@polkadot/util-crypto';
-import { AccountInfo } from '@coong/keyring/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { useWalletState } from 'providers/WalletStateProvider';
 import { accountsActions } from 'redux/slices/accounts';
 import { RootState } from 'redux/store';

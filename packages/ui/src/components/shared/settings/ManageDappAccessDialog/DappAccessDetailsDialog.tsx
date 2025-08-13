@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppInfo } from '@coong/base/requests/WalletState';
+import { AppInfo } from '@dedot/signer-base/requests/WalletState';
 import { Button, Dialog, DialogContent } from '@mui/material';
 import AccountsSelection from 'components/pages/Request/RequestAccess/AccountsSelection';
 import DialogTitle from 'components/shared/DialogTitle';

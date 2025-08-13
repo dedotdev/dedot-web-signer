@@ -29,7 +29,7 @@ function QrCodeReader({ onResult, object, showTitle, goBack }: QrCodeReaderProps
         <Alert className='mt-4' severity='error'>
           <AlertTitle>{t<string>('Camera Permission Denied')}</AlertTitle>
           {t<string>(
-            'Coong Wallet needs your permission to access the device camera to scan QR code. Please update the browser settings to allow camera access.',
+            'Dedot Signer needs your permission to access the device camera to scan QR code. Please update the browser settings to allow camera access.',
           )}
         </Alert>
       ) : (

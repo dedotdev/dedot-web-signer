@@ -1,15 +1,15 @@
 import type { Signer as SignerInterface, SignerResult } from '@polkadot/api/types';
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types/extrinsic';
-import CoongSdk from '@coong/sdk';
+import { DedotSignerSdk } from '@dedot/signer-sdk';
 
 const nextRequestId = (): number => {
   return Date.now();
 };
 
-export default class CoongSigner implements SignerInterface {
-  #sdk: CoongSdk;
+export class DedotSigner implements SignerInterface {
+  #sdk: DedotSignerSdk;
 
-  constructor(sdk: CoongSdk) {
+  constructor(sdk: DedotSignerSdk) {
     this.#sdk = sdk;
   }
 

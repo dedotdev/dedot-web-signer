@@ -1,6 +1,6 @@
-import { compareWalletInfo } from '@coong/base';
-import { WalletSignal, WalletSignalMessage } from '@coong/base/types';
-import { StandardCoongError } from '@coong/utils';
+import { compareWalletInfo } from '@dedot/signer-base';
+import { WalletSignal, WalletSignalMessage } from '@dedot/signer-base/types';
+import { StandardDedotSignerError } from '@dedot/signer-utils';
 import WalletInstance from './WalletInstance';
 
 const POPUP_WINDOW_FEATURES = `resizable=no,status=no,location=no,toolbar=no,menubar=no,width=620,height=700,left=150,top=150`;
@@ -22,7 +22,7 @@ export default class TabInstance extends WalletInstance {
     const tabWalletWindow = window.open(`${this.walletUrl}${path}`, '_blank', POPUP_WINDOW_FEATURES);
 
     if (!tabWalletWindow) {
-      throw new StandardCoongError('Error open wallet tab');
+      throw new StandardDedotSignerError('Error open wallet tab');
     }
 
     await this.waitUntilWalletReady();

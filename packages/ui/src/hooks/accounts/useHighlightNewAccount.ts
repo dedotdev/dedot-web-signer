@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { encodeAddress } from '@polkadot/util-crypto';
-import { AccountInfo } from '@coong/keyring/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { RootState } from 'redux/store';
 
 export default function useHighlightNewAccount() {

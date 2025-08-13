@@ -1,5 +1,5 @@
 import { injectExtension } from '@polkadot/extension-inject';
-import { isWalletResponse, newMessageId, newWalletRequest } from '@coong/base';
+import { isWalletResponse, newMessageId, newWalletRequest } from '@dedot/signer-base';
 import {
   MessageId,
   MessageType,
@@ -9,41 +9,41 @@ import {
   WalletRequestMessage,
   WalletResponse,
   WalletResponseMessage,
-} from '@coong/base/types';
-import { assert, assertFalse, CoongError, ErrorCode, trimTrailingSlash } from '@coong/utils';
-import ConnectedAccounts from './ConnectedAccounts';
+} from '@dedot/signer-base/types';
+import { assert, assertFalse, DedotSignerError, ErrorCode, trimTrailingSlash } from '@dedot/signer-utils';
+import { ConnectedAccounts } from './ConnectedAccounts';
 import SubstrateInjected from './injection/Injected';
-import { CoongSdkOptions, Handlers, InjectedWindow, UpdatableInjected } from './types';
+import { DedotSignerSdkOptions, Handlers, InjectedWindow, UpdatableInjected } from './types';
 import TabInstance from './wallet/TabInstance';
 
-const DEFAULT_WALLET_URL = 'https://app.coongwallet.io';
+const DEFAULT_WALLET_URL = 'https://signer.dedot.dev';
 
 /**
- * @name CoongSdk
- * @description A helper to initialize/inject Coong Wallet API
+ * @name DedotSignerSdk
+ * @description A helper to initialize/inject Dedot Signer API
  * and interact with wallet instances
  *
- * ## Initialize & interact with Coong Wallet
+ * ## Initialize & interact with Dedot Signer
  *
  * ```typescript
- * import CoongSdk from '@coong/sdk';
+ * import { DedotSignerSdk } from '@dedot/signer-sdk';
  *
- * const initializeCoongWallet = async () => {
- *   // Inject Coong Wallet API
- *   const sdk = new CoongSdk()
+ * const initializeDedotSigner = async () => {
+ *   // Inject Dedot Signer API
+ *   const sdk = new DedotSignerSdk()
  *   await sdk.initialize();
  *
  *   // We can now interact with the wallet using the similar Polkadot{.js} extension API
- *   const injected = await window['injectedWeb3']['coongwallet'].enable('Awesome Dapp');
+ *   const injected = await window['injectedWeb3']['dedot-signer'].enable('Awesome Dapp');
  *   const approvedAccounts = await injected.accounts.get();
  *
  *   return { sdk, injected, approvedAccounts }
  * }
  *
- * await initializeCoongWallet();
+ * await initializeDedotSigner();
  * ```
  */
-export default class CoongSdk {
+export class DedotSignerSdk {
   #walletUrl: string;
   #initialized: boolean;
   #handlers: Handlers;
@@ -51,7 +51,7 @@ export default class CoongSdk {
   #connectedAccounts?: ConnectedAccounts;
   #walletInstancesQueue: Window[];
 
-  constructor(options?: CoongSdkOptions) {
+  constructor(options?: DedotSignerSdkOptions) {
     this.#initialized = false;
     this.#handlers = {};
 
@@ -65,8 +65,8 @@ export default class CoongSdk {
    * Initialize & inject wallet API
    */
   async initialize() {
-    assert(typeof window !== 'undefined', 'Coong SDK only works in browser environment!');
-    assertFalse(this.#initialized, 'Coong Sdk is already initialized!');
+    assert(typeof window !== 'undefined', 'Dedot Signer SDK only works in browser environment!');
+    assertFalse(this.#initialized, 'Dedot Signer SDK is already initialized!');
 
     await this.#loadWalletInfo();
 
@@ -78,11 +78,11 @@ export default class CoongSdk {
 
     this.#initialized = true;
 
-    console.log('Coong SDK initialized!');
+    console.log('Dedot Signer SDK initialized!');
   }
 
   /**
-   * Destroy Coong Wallet initialization
+   * Destroy Dedot Signer initialization
    */
   destroy() {
     if (!this.#initialized) {
@@ -160,7 +160,7 @@ export default class CoongSdk {
     } else if (name.startsWith('tab/')) {
       await this.#sendMessageToTabInstance(message);
     } else {
-      throw new CoongError(ErrorCode.InvalidMessageFormat);
+      throw new DedotSignerError(ErrorCode.InvalidMessageFormat);
     }
   }
 
@@ -168,7 +168,7 @@ export default class CoongSdk {
    * Making sure the wallet has been initialized, else an error will be thrown out
    */
   ensureSdkInitialized() {
-    assert(this.#initialized, 'CoongSdk has not been initialized!');
+    assert(this.#initialized, 'Dedot Signer SDK has not been initialized!');
   }
 
   #walletMessageHandler(event: MessageEvent<WalletResponseMessage>) {

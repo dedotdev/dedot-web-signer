@@ -1,7 +1,7 @@
 import { waitFor } from '@testing-library/react';
 import { forwardRef } from 'react';
 import { base64Encode } from '@polkadot/util-crypto';
-import Keyring from '@coong/keyring';
+import Keyring from '@dedot/signer-keyring';
 import { UserEvent, initializeKeyring, newUser, PASSWORD, render, screen } from '__tests__/testUtils';
 import { vi } from 'vitest';
 import MenuButton from '../MenuButton';
@@ -99,7 +99,7 @@ describe('MenuButton', () => {
       await user.click(await screen.findByRole('button', { name: /Continue/ }));
 
       expect(
-        await screen.findByText(/Open Coong Wallet on another device and scan this QR Code to transfer your wallet/),
+        await screen.findByText(/Open Dedot Signer on another device and scan this QR Code to transfer your wallet/),
       ).toBeInTheDocument();
 
       expect(await screen.findByTitle(/Wallet Export QR Code/)).toBeInTheDocument();

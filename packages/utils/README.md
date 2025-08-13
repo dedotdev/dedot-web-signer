@@ -1,3 +1,3 @@
-# @coong/utils
+# @dedot/signer-utils
 
-Useful utilities are used across Coong Wallet packages 
+Useful utilities are used across Dedot Signer packages 

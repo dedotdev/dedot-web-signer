@@ -1,5 +1,5 @@
 import { base64Encode } from '@polkadot/util-crypto';
-import { WalletQrBackup } from '@coong/keyring/types';
+import { WalletQrBackup } from '@dedot/signer-keyring/types';
 import { UserEvent, MNEMONIC, newUser, PASSWORD, render, screen, initializeKeyring } from '__tests__/testUtils';
 import CryptoJS from 'crypto-js';
 import { vi } from 'vitest';

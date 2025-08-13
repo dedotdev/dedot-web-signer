@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { networks } from '@coong/base';
-import { NetworkInfo } from '@coong/base/types';
+import { networks } from '@dedot/signer-base';
+import { NetworkInfo } from '@dedot/signer-base/types';
 import { Autocomplete, TextField } from '@mui/material';
 import { appActions } from 'redux/slices/app';
 import { RootState } from 'redux/store';

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { u8aToString } from '@polkadot/util';
 import { base64Decode, isBase64 } from '@polkadot/util-crypto';
-import { AccountBackup } from '@coong/keyring/types';
+import { AccountBackup } from '@dedot/signer-keyring/types';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, DialogContent, Tab } from '@mui/material';
 import DialogTitle from 'components/shared/DialogTitle';

@@ -1,5 +1,5 @@
-import Keyring from '@coong/keyring';
-import { AccountInfo } from '@coong/keyring/types';
+import Keyring from '@dedot/signer-keyring';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { initializeKeyring, newUser, PASSWORD, render, screen, UserEvent, waitFor } from '__tests__/testUtils';
 import { beforeEach, vi } from 'vitest';
 import NewAccountButton from '../NewAccountButton';

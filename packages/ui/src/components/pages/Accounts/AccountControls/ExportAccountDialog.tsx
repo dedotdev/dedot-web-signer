@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { AccountBackup } from '@coong/keyring/types';
+import { AccountBackup } from '@dedot/signer-keyring/types';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Dialog, DialogContent, Tab } from '@mui/material';
 import DialogTitle from 'components/shared/DialogTitle';

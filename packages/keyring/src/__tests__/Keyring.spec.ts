@@ -1,9 +1,9 @@
 import { Keyring as InnerKeyring } from '@polkadot/ui-keyring/Keyring';
 import { encodeAddress } from '@polkadot/util-crypto';
 import { generateMnemonic } from '@polkadot/util-crypto/mnemonic/bip39';
-import Keyring, { ACCOUNTS_INDEX, ENCRYPTED_MNEMONIC, ORIGINAL_HASH } from '@coong/keyring/Keyring';
-import { AccountBackup, AccountInfo, WalletBackup, WalletQrBackup } from '@coong/keyring/types';
-import { CoongError, ErrorCode, StandardCoongError, sha256AsHex } from '@coong/utils';
+import Keyring, { ACCOUNTS_INDEX, ENCRYPTED_MNEMONIC, ORIGINAL_HASH } from '@dedot/signer-keyring/Keyring';
+import { AccountBackup, AccountInfo, WalletBackup, WalletQrBackup } from '@dedot/signer-keyring/types';
+import { DedotSignerError, ErrorCode, StandardDedotSignerError, sha256AsHex } from '@dedot/signer-utils';
 import CryptoJS from 'crypto-js';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -91,14 +91,16 @@ describe('verifyPassword', () => {
     const keyring = new Keyring();
 
     await expect(keyring.verifyPassword(PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.KeyringNotInitialized),
+      new DedotSignerError(ErrorCode.KeyringNotInitialized),
     );
   });
 
   it('should throw out error if password is not correct', async () => {
     await initializeNewKeyring();
 
-    await expect(keyring.verifyPassword('incorrect')).rejects.toThrowError(new CoongError(ErrorCode.PasswordIncorrect));
+    await expect(keyring.verifyPassword('incorrect')).rejects.toThrowError(
+      new DedotSignerError(ErrorCode.PasswordIncorrect),
+    );
   });
 
   it('should not throw out anything if password is correct', async () => {
@@ -135,19 +137,19 @@ describe('createNewAccount', () => {
 
     it('should required account name to create new account', async () => {
       await expect(keyring.createNewAccount('', PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.AccountNameRequired),
+        new DedotSignerError(ErrorCode.AccountNameRequired),
       );
     });
 
     it('should required password to create new account', async () => {
       await expect(keyring.createNewAccount('Account name', '')).rejects.toThrowError(
-        new CoongError(ErrorCode.PasswordRequired),
+        new DedotSignerError(ErrorCode.PasswordRequired),
       );
     });
 
     it('should throw out error if password is incorrect', async () => {
       await expect(keyring.createNewAccount('Account name', 'incorrect')).rejects.toThrowError(
-        new CoongError(ErrorCode.PasswordIncorrect),
+        new DedotSignerError(ErrorCode.PasswordIncorrect),
       );
     });
 
@@ -155,7 +157,7 @@ describe('createNewAccount', () => {
       await keyring.createNewAccount('Account 01', PASSWORD);
 
       await expect(keyring.createNewAccount('Account 01', PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.AccountNameUsed),
+        new DedotSignerError(ErrorCode.AccountNameUsed),
       );
     });
 
@@ -194,7 +196,7 @@ describe('createNewAccount', () => {
     it('should throw out error', async () => {
       const keyring = new Keyring();
       await expect(keyring.createNewAccount('Account name', PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.KeyringNotInitialized),
+        new DedotSignerError(ErrorCode.KeyringNotInitialized),
       );
     });
   });
@@ -209,7 +211,7 @@ describe('getAccount', () => {
 
   it('should throw out error if account not found', async () => {
     await expect(keyring.getAccount('0xNotExistedAddress')).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNotFound),
+      new DedotSignerError(ErrorCode.AccountNotFound),
     );
   });
 
@@ -235,7 +237,7 @@ describe('getAccountByName', () => {
 
   it('should throw out error if account not found', async () => {
     await expect(keyring.getAccountByName('NotExistedName')).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNotFound),
+      new DedotSignerError(ErrorCode.AccountNotFound),
     );
   });
 
@@ -252,7 +254,9 @@ describe('getSigningPair', () => {
   });
 
   it('should throw out error if keypair not found', () => {
-    expect(() => keyring.getSigningPair('0xNotExistedAddress')).toThrowError(new CoongError(ErrorCode.KeypairNotFound));
+    expect(() => keyring.getSigningPair('0xNotExistedAddress')).toThrowError(
+      new DedotSignerError(ErrorCode.KeypairNotFound),
+    );
   });
 
   it('should return keypair for existed address', () => {
@@ -299,7 +303,7 @@ describe('changePassword', () => {
     const keyring = new Keyring();
 
     await expect(keyring.changePassword(PASSWORD, NEW_PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.KeyringNotInitialized),
+      new DedotSignerError(ErrorCode.KeyringNotInitialized),
     );
   });
 
@@ -307,7 +311,7 @@ describe('changePassword', () => {
     const keyring = await initializeNewKeyring();
 
     await expect(keyring.changePassword('incorrect-password', NEW_PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.PasswordIncorrect),
+      new DedotSignerError(ErrorCode.PasswordIncorrect),
     );
   });
 
@@ -370,7 +374,7 @@ describe('removeAccount', () => {
     await keyring.removeAccount(testAccount.address);
 
     await expect(keyring.getAccountByName('test-account')).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNotFound),
+      new DedotSignerError(ErrorCode.AccountNotFound),
     );
   });
 });
@@ -384,7 +388,7 @@ describe('renameAccount', () => {
 
   it('should throw an error when the name already exists', async () => {
     await expect(keyring.renameAccount(address, 'test-account')).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNameUsed),
+      new DedotSignerError(ErrorCode.AccountNameUsed),
     );
   });
 
@@ -400,7 +404,7 @@ describe('renameAccount', () => {
 
     await expect(keyring.getAccountByName('valid-name')).resolves;
     await expect(keyring.getAccountByName('test-account')).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNotFound),
+      new DedotSignerError(ErrorCode.AccountNotFound),
     );
   });
 });
@@ -447,7 +451,7 @@ describe('importQrBackup', () => {
     const keyring = await initializeNewKeyring();
 
     await expect(keyring.importQrBackup(qrBackup, PASSWORD)).rejects.toThrowError(
-      new StandardCoongError('Wallet is already initialized'),
+      new StandardDedotSignerError('Wallet is already initialized'),
     );
   });
 
@@ -472,7 +476,7 @@ describe('importQrBackup', () => {
       qrBackup.encryptedMnemonic = CryptoJS.AES.encrypt('a random invalid seed phrase', PASSWORD).toString();
 
       await expect(keyring.importQrBackup(qrBackup, PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.InvalidMnemonic),
+        new DedotSignerError(ErrorCode.InvalidMnemonic),
       );
     });
 
@@ -554,7 +558,7 @@ describe('importAccount', () => {
     await keyring.importAccount(backup, BACKUP_PASSWORD, PASSWORD);
 
     await expect(keyring.importAccount(backup, BACKUP_PASSWORD, PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountExisted),
+      new DedotSignerError(ErrorCode.AccountExisted),
     );
   });
 
@@ -562,14 +566,14 @@ describe('importAccount', () => {
     await keyring.createNewAccount('test-account', BACKUP_PASSWORD);
 
     await expect(keyring.importAccount(backup, BACKUP_PASSWORD, PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.AccountNameUsed),
+      new DedotSignerError(ErrorCode.AccountNameUsed),
     );
   });
 
   it('should throw error if account name not found', async () => {
     await expect(
       keyring.importAccount({ ...backup, meta: { ...backup.meta, name: '' } }, BACKUP_PASSWORD, PASSWORD),
-    ).rejects.toThrowError(new CoongError(ErrorCode.AccountNameRequired));
+    ).rejects.toThrowError(new DedotSignerError(ErrorCode.AccountNameRequired));
   });
 
   it('should found account after restoring account', async () => {
@@ -580,7 +584,7 @@ describe('importAccount', () => {
 
   it('should throw error if password incorrect', async () => {
     await expect(keyring.importAccount(backup, 'incorrect-password', PASSWORD)).rejects.toThrowError(
-      new CoongError(ErrorCode.PasswordIncorrect),
+      new DedotSignerError(ErrorCode.PasswordIncorrect),
     );
   });
 
@@ -600,7 +604,7 @@ describe('verifyAccountBackupPassword', () => {
     const backup = await keyring.exportAccount(address, PASSWORD);
 
     await expect(keyring.verifyAccountBackupPassword(backup, 'incorrect-password')).rejects.toThrowError(
-      new CoongError(ErrorCode.PasswordIncorrect),
+      new DedotSignerError(ErrorCode.PasswordIncorrect),
     );
   });
 });
@@ -620,7 +624,7 @@ describe('importBackup', () => {
     keyring = await initializeNewKeyring();
 
     await expect(keyring.importBackup(backup, PASSWORD)).rejects.toThrowError(
-      new StandardCoongError('Wallet is already initialized'),
+      new StandardDedotSignerError('Wallet is already initialized'),
     );
   });
 
@@ -655,13 +659,13 @@ describe('importBackup', () => {
       backup.encryptedMnemonic = CryptoJS.AES.encrypt('a random invalid seed phrase', PASSWORD).toString();
 
       await expect(keyring.importBackup(backup, PASSWORD)).rejects.toThrowError(
-        new CoongError(ErrorCode.InvalidMnemonic),
+        new DedotSignerError(ErrorCode.InvalidMnemonic),
       );
     });
 
     it('should throw error if password incorrect', async () => {
       await expect(keyring.importBackup(backup, 'wrong-password')).rejects.toThrowError(
-        new CoongError(ErrorCode.PasswordIncorrect),
+        new DedotSignerError(ErrorCode.PasswordIncorrect),
       );
     });
 

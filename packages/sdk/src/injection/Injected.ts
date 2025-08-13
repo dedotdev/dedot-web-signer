@@ -1,16 +1,16 @@
-import CoongSdk from '../CoongSdk';
+import { DedotSignerSdk } from '../DedotSignerSdk';
 import { UpdatableInjected } from '../types';
-import Accounts from './Accounts';
-import CoongSigner from './CoongSigner';
+import { Accounts } from './Accounts';
+import { DedotSigner } from './DedotSigner';
 
 export default class SubstrateInjected implements UpdatableInjected {
   public readonly accounts: Accounts;
-  public readonly signer: CoongSigner;
+  public readonly signer: DedotSigner;
 
-  constructor(sdk: CoongSdk) {
+  constructor(sdk: DedotSignerSdk) {
     sdk.ensureSdkInitialized();
 
     this.accounts = new Accounts(sdk);
-    this.signer = new CoongSigner(sdk);
+    this.signer = new DedotSigner(sdk);
   }
 }

@@ -1,6 +1,6 @@
 import { encodeAddress } from '@polkadot/util-crypto';
-import { defaultNetwork, networks } from '@coong/base';
-import { AccountInfo } from '@coong/keyring/types';
+import { defaultNetwork, networks } from '@dedot/signer-base';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { UserEvent, initializeKeyring, newUser, PASSWORD, render, screen, waitFor } from '__tests__/testUtils';
 import Accounts from '../index';
 

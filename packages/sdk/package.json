@@ -1,13 +1,13 @@
 {
-  "name": "@coong/sdk",
+  "name": "@dedot/signer-sdk",
   "version": "0.0.23",
-  "description": "Coong SDK to integrate Coong Wallet into dapps",
-  "author": "Thang X. Vu <thang@coongwallet.io>",
-  "homepage": "https://github.com/CoongCrafts/coong-wallet/tree/main/packages/sdk#readme",
+  "description": "Dedot SDK to integrate Dedot Signer into dapps",
+  "author": "Thang X. Vu <thang@dedot.dev>",
+  "homepage": "https://github.com/dedotdev/dedot-web-signer/tree/main/packages/sdk#readme",
   "repository": {
     "directory": "packages/sdk",
     "type": "git",
-    "url": "https://github.com/CoongCrafts/coong-wallet.git"
+    "url": "https://github.com/dedotdev/dedot-web-signer.git"
   },
   "main": "src/index.ts",
   "scripts": {
@@ -15,8 +15,8 @@
     "clean": "rm -rf ./dist && rm -rf ./tsconfig.tsbuildinfo ./tsconfig.build.tsbuildinfo"
   },
   "dependencies": {
-    "@coong/base": "^0.0.23",
-    "@coong/utils": "^0.0.23",
+    "@dedot/signer-base": "^0.0.23",
+    "@dedot/signer-utils": "^0.0.23",
     "@polkadot/extension-inject": "^0.61.5",
     "rxjs": "^7.8.0"
   },

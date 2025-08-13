@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppInfo } from '@coong/base/requests/WalletState';
+import { AppInfo } from '@dedot/signer-base/requests/WalletState';
 import { Button, Dialog, DialogContent } from '@mui/material';
 import DappAccessToAccountItem from 'components/pages/Accounts/AccountControls/DappsAccessToAccountDialog/DappAccessToAccountItem';
 import RemoveAllDappsAccessToAccountButton from 'components/pages/Accounts/AccountControls/DappsAccessToAccountDialog/RemoveAllDappsAccessToAccountButton';

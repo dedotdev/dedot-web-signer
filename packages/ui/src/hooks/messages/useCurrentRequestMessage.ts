@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useBoolean, useEffectOnce } from 'react-use';
-import { WalletRequestWithResolver } from '@coong/base/types';
+import { WalletRequestWithResolver } from '@dedot/signer-base/types';
 import { useWalletState } from 'providers/WalletStateProvider';
 
 export default function useCurrentRequestMessage(): [boolean, WalletRequestWithResolver | undefined] {

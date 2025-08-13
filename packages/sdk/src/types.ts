@@ -4,7 +4,7 @@ import {
   InjectedAccounts,
   InjectedWindowProvider as DefaultInjectedWindowProvider,
 } from '@polkadot/extension-inject/types';
-import { MessageId, RequestName, WalletRequest, WalletResponse } from '@coong/base/types';
+import { MessageId, RequestName, WalletRequest, WalletResponse } from '@dedot/signer-base/types';
 
 export interface Handler {
   resolve: (data: any) => void;
@@ -13,7 +13,7 @@ export interface Handler {
 
 export type Handlers = Record<MessageId, Handler>;
 
-export interface CoongSdkOptions {
+export interface DedotSignerSdkOptions {
   walletUrl: string;
 }
 

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { SignerPayloadRaw } from '@polkadot/types/types';
 import { isAscii, u8aToString, u8aUnwrapBytes } from '@polkadot/util';
-import { WalletRequestWithResolver } from '@coong/base/types';
+import { WalletRequestWithResolver } from '@dedot/signer-base/types';
 import { DetailRowProps, ValueStyle } from 'components/pages/Request/RequestSigning/DetailRow';
 
 export function useRawMessageDetails(message: WalletRequestWithResolver): DetailRowProps[] {

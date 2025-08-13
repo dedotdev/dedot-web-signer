@@ -1,3 +1,3 @@
-# @coong/base
+# @dedot/signer-base
 
-Shared functions & logic for Coong Wallet
+Shared functions & logic for Dedot Signer

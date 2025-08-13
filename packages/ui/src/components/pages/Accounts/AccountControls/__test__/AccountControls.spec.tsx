@@ -1,8 +1,8 @@
 import { encodeAddress } from '@polkadot/util-crypto';
-import { defaultNetwork, networks, WalletState } from '@coong/base';
-import Keyring from '@coong/keyring';
-import { AccountInfo } from '@coong/keyring/types';
-import { trimOffUrlProtocol } from '@coong/utils';
+import { defaultNetwork, networks, WalletState } from '@dedot/signer-base';
+import Keyring from '@dedot/signer-keyring';
+import { AccountInfo } from '@dedot/signer-keyring/types';
+import { trimOffUrlProtocol } from '@dedot/signer-utils';
 import {
   UserEvent,
   initializeKeyring,
@@ -159,7 +159,7 @@ describe('AccountControls', () => {
 
       it('should export account when password correct', async () => {
         expect(
-          await screen.findByText(/Open Coong Wallet on another device and scan this QR Code to transfer your account/),
+          await screen.findByText(/Open Dedot Signer on another device and scan this QR Code to transfer your account/),
         ).toBeInTheDocument();
         expect(await screen.findByTitle(/Account Export QR Code/)).toBeInTheDocument();
         expect(await screen.findByRole('button', { name: /Download QR Code Image/ })).toBeInTheDocument();
@@ -170,7 +170,7 @@ describe('AccountControls', () => {
 
         expect(
           await screen.findByText(
-            /Export this account to a JSON file and import it back to Coong Wallet on this or other devices later/,
+            /Export this account to a JSON file and import it back to Dedot Signer on this or other devices later/,
           ),
         ).toBeInTheDocument();
         expect(await screen.findByRole('button', { name: /Download JSON File/ })).toBeInTheDocument();

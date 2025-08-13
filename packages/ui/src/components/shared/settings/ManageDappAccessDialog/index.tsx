@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { AppInfo } from '@coong/base/requests/WalletState';
+import { AppInfo } from '@dedot/signer-base/requests/WalletState';
 import { Breadcrumbs, Button, DialogContent, Link, Typography } from '@mui/material';
 import DialogTitle from 'components/shared/DialogTitle';
 import SearchBox from 'components/shared/accounts/SearchBox';

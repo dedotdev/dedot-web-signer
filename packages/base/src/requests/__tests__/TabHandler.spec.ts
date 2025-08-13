@@ -1,7 +1,7 @@
-import { newWalletRequest } from '@coong/base';
-import { RequestName } from '@coong/base/types';
-import { AccountInfo } from '@coong/keyring/types';
-import { CoongError, ErrorCode, StandardCoongError } from '@coong/utils';
+import { newWalletRequest } from '@dedot/signer-base';
+import { RequestName } from '@dedot/signer-base/types';
+import { AccountInfo } from '@dedot/signer-keyring/types';
+import { DedotSignerError, ErrorCode, StandardDedotSignerError } from '@dedot/signer-utils';
 import { beforeEach, describe, expect, it } from 'vitest';
 import TabHandler from '../TabHandler';
 import { newWalletState, PASSWORD, setupAuthorizedApps } from './setup';
@@ -36,7 +36,7 @@ describe('handle', () => {
           name: 'tab/unsupportedRequest',
         }),
       ),
-    ).rejects.toThrowError(new CoongError(ErrorCode.UnknownRequest));
+    ).rejects.toThrowError(new DedotSignerError(ErrorCode.UnknownRequest));
   });
 
   it.each(['tab/signRaw', 'tab/signExtrinsic', 'tab/updateAccess'])(
@@ -51,7 +51,9 @@ describe('handle', () => {
           }),
           origin: currentWindowOrigin,
         }),
-      ).rejects.toThrowError(new StandardCoongError(`The app at ${currentWindowOrigin} has not been authorized yet!`));
+      ).rejects.toThrowError(
+        new StandardDedotSignerError(`The app at ${currentWindowOrigin} has not been authorized yet!`),
+      );
     },
   );
 
@@ -82,7 +84,7 @@ describe('handle', () => {
         origin: currentWindowOrigin,
       }),
     ).rejects.toThrowError(
-      new StandardCoongError(`The app at ${currentWindowOrigin} has not been authorized to access any accounts!`),
+      new StandardDedotSignerError(`The app at ${currentWindowOrigin} has not been authorized to access any accounts!`),
     );
   });
 
@@ -125,7 +127,7 @@ describe('handle', () => {
           origin: currentWindowOrigin,
         }),
       ).rejects.toThrowError(
-        new StandardCoongError(
+        new StandardDedotSignerError(
           `The app at ${currentWindowOrigin} is not authorized to access account with address ${account02.address}!`,
         ),
       );

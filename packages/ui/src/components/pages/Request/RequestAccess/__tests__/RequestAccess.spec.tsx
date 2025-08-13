@@ -1,7 +1,7 @@
-import { defaultNetwork, newWalletErrorResponse, newWalletRequest, newWalletResponse } from '@coong/base';
-import { AccessStatus, WalletRequestMessage } from '@coong/base/types';
-import Keyring from '@coong/keyring';
-import { AccountInfo } from '@coong/keyring/types';
+import { defaultNetwork, newWalletErrorResponse, newWalletRequest, newWalletResponse } from '@dedot/signer-base';
+import { AccessStatus, WalletRequestMessage } from '@dedot/signer-base/types';
+import Keyring from '@dedot/signer-keyring';
+import { AccountInfo } from '@dedot/signer-keyring/types';
 import { PreloadedState } from '@reduxjs/toolkit';
 import { SpyInstance } from '@vitest/spy';
 import { UserEvent, initializeKeyring, newUser, PASSWORD, render, RouterWrapper, screen } from '__tests__/testUtils';
