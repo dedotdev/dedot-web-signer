@@ -1,3 +1,6 @@
+> [!NOTE]
+> We're in the process of rebranding Coong Wallet to Dedot Signer, information in this repo might be conflicted or confusing.
+
 <br/>
 <p align="center">
   <img src="https://user-images.githubusercontent.com/6867026/223087394-fb37466f-3cb8-4cc8-ac83-e807514dc366.png" height="50">
