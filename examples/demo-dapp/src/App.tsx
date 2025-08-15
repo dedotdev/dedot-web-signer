@@ -4,6 +4,27 @@ import { DedotClient, WsProvider } from 'dedot';
 import { DedotSignerSdk } from '@dedot/signer-sdk';
 import './App.css';
 
+// Utility function to truncate long addresses for mobile display
+const truncateAddress = (address: string, startChars = 6, endChars = 4): string => {
+  if (address.length <= startChars + endChars) return address;
+  return `${address.slice(0, startChars)}...${address.slice(-endChars)}`;
+};
+
+// Copy to clipboard function
+const copyToClipboard = async (text: string): Promise<void> => {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+  }
+};
+
 const useApi = (): [boolean, DedotClient | undefined] => {
   const [ready, setReady] = useState<boolean>(false);
   const [client, setClient] = useState<DedotClient>();
@@ -23,6 +44,7 @@ export default function App() {
   const [accounts, setAccounts] = useState<any[]>([]);
   const [injector, setInjector] = useState<any>();
   const [apiReady, client] = useApi();
+  const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
 
   const enable = async () => {
     // @ts-ignore
@@ -45,6 +67,12 @@ export default function App() {
     setAccounts([]);
   }
 
+  const handleCopyAddress = async (address: string) => {
+    await copyToClipboard(address);
+    setCopiedAddress(address);
+    setTimeout(() => setCopiedAddress(null), 2000); // Clear after 2 seconds
+  };
+
   const transferToken = async (from: string) => {
     if (!client) {
       return;
@@ -64,26 +92,41 @@ export default function App() {
       <h1>Sample Dapp</h1>
       <div className='card'>
         {accounts.length === 0 ? (
-          <button onClick={() => enable()}>
+          <button className='connect-btn' onClick={() => enable()}>
             Connect Wallet
           </button>
         ) : (
-          <div>
-            <p>{accounts.length} accounts connected</p>
-            <ul>
+          <div className='connected-section'>
+            <p className='account-count'>{accounts.length} account{accounts.length > 1 ? 's' : ''} connected</p>
+            <div className='accounts-list'>
               {accounts.map((one) => (
-                <li key={one.address}>
-                  <span>
-                    {one.name} - {one.address}
-                  </span>
-                  <button disabled={!apiReady} onClick={() => transferToken(one.address)}>
+                <div key={one.address} className='account-item'>
+                  <div className='account-info'>
+                    <div className='account-name'>{one.name}</div>
+                    <div className='address-container'>
+                      <span className='address-full'>{one.address}</span>
+                      <span className='address-mobile'>{truncateAddress(one.address)}</span>
+                      <button 
+                        className='copy-btn'
+                        onClick={() => handleCopyAddress(one.address)}
+                        title='Copy address'
+                      >
+                        {copiedAddress === one.address ? '✓' : '📋'}
+                      </button>
+                    </div>
+                  </div>
+                  <button 
+                    className='transfer-btn' 
+                    disabled={!apiReady} 
+                    onClick={() => transferToken(one.address)}
+                  >
                     Transfer
                   </button>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
 
-            <button onClick={() => disconnect()}>
+            <button className='disconnect-btn' onClick={() => disconnect()}>
               Disconnect
             </button>
           </div>

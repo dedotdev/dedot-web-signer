@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,6 +41,210 @@
 
 .card {
   padding: 2em;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.connect-btn, .disconnect-btn {
+  padding: 0.8em 1.5em;
+  font-size: 1.1em;
+  margin: 0.5em;
+  min-height: 48px; /* Touch target minimum */
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.connect-btn {
+  background-color: #646cff;
+  color: white;
+}
+
+.connect-btn:hover {
+  background-color: #535bf2;
+}
+
+.disconnect-btn {
+  background-color: #dc3545;
+  color: white;
+  margin-top: 1.5em;
+}
+
+.disconnect-btn:hover {
+  background-color: #c82333;
+}
+
+/* Connected section styles */
+.connected-section {
+  text-align: left;
+  max-width: 100%;
+}
+
+.account-count {
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 1.5em;
+  font-weight: 500;
+}
+
+/* Account list styles */
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1.5em;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  gap: 1em;
+}
+
+.account-info {
+  flex: 1;
+  min-width: 0; /* Allow flex item to shrink */
+}
+
+.account-name {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+}
+
+.address-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.address-full {
+  display: inline;
+  word-break: break-all;
+}
+
+.address-mobile {
+  display: none;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3em;
+  font-size: 0.9em;
+  border-radius: 4px;
+  min-width: auto;
+  min-height: auto;
+  opacity: 0.7;
+  transition: opacity 0.25s;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.transfer-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 0.7em 1.2em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  min-height: 40px;
+  transition: background-color 0.25s;
+  white-space: nowrap;
+}
+
+.transfer-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.transfer-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5em 1em;
+  }
+  
+  .account-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    padding: 1em;
+  }
+  
+  .account-info {
+    text-align: center;
+  }
+  
+  .account-name {
+    font-size: 1.1em;
+    margin-bottom: 0.7em;
+  }
+  
+  .address-container {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .address-full {
+    display: none;
+  }
+  
+  .address-mobile {
+    display: inline;
+    font-size: 1em;
+  }
+  
+  .copy-btn {
+    font-size: 1em;
+    padding: 0.4em;
+  }
+  
+  .transfer-btn {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 1em;
+  }
+  
+  .connect-btn, .disconnect-btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0.5em auto;
+    font-size: 1.1em;
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .card {
+    padding: 1em 0.5em;
+  }
+  
+  .account-item {
+    padding: 0.8em;
+  }
+  
+  .address-container {
+    font-size: 0.9em;
+  }
 }
 
 .read-the-docs {
