@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+  ]
+}
