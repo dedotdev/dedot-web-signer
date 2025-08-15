@@ -16,8 +16,8 @@
   },
   "main": "src/index.ts",
   "dependencies": {
-    "@dedot/signer-keyring": "^0.0.23",
-    "@dedot/signer-utils": "^0.0.23",
+    "@dedot/signer-keyring": "workspace:*",
+    "@dedot/signer-utils": "workspace:*",
     "@polkadot/networks": "^13.5.5",
     "@polkadot/types": "^16.4.3",
     "@polkadot/util": "^13.5.5",

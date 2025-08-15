@@ -19,7 +19,7 @@ export default class TabInstance extends WalletInstance {
   async openWalletWindow(path = ''): Promise<Window> {
     this.registerEvent();
 
-    const tabWalletWindow = window.open(`${this.walletUrl}${path}`, '_blank', POPUP_WINDOW_FEATURES);
+    const tabWalletWindow = window.open(`${this.walletUrl}${path}`, 'dedot-signer', POPUP_WINDOW_FEATURES);
 
     if (!tabWalletWindow) {
       throw new StandardDedotSignerError('Error open wallet tab');
