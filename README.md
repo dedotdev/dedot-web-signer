@@ -15,7 +15,9 @@ A website-based multi-chain crypto wallet & signer for <a href="https://polkadot
 <p>
 
 <p align="center">
-<a href="https://signer.dedot.dev">Example Playground Dapp</a>
+<a href="https://signer.dedot.dev">Signer App</a>
+|
+<a href="https://try.dedot.dev">Example Dapp</a>
 <p>
 
 <p align="center">
@@ -38,13 +40,6 @@ A website-based multi-chain crypto wallet & signer for <a href="https://polkadot
 ## Demo videos on Wallet x Dapp interactions
 - Desktop: https://youtu.be/9fIcAlpx_UI
 - Mobile: https://youtu.be/F8S2fmQFRWQ
-
-## Why do we build Dedot Signer?
-The Polkadot and Kusama ecosystems currently offers several wallet solutions with excellent UI/UX, such as SubWallet, NovaWallet, Talisman. However, on desktop, most of these solutions are browser extension-based wallets, requiring users to install an extension to interact with dapps and networks. On mobile, since most browsers do not support extensions, users need to install wallet mobile apps and access dapps through a built-in Dapp Browser within the wallets (SubWallet, Nova). This creates an inconsistent experience between desktop and mobile, which poses a barrier for onboarding new users to the ecosystem, especially those who are new to or less familiar with cryptocurrencies.
-
-As users, we love the website-based wallet experience provided by the [NEAR wallet](https://wallet.near.org/) in the NEAR ecosystem. It allows users to connect to dapps using their preferred browsers and access their wallets smoothly within the same browser on both desktop and mobile platforms.
-
-With that inspiration, we propose building Dedot Signer, a website-based multi-chain wallet, to offer a similar experience in the Polkadot and Kusama ecosystems. We believe that Dedot Signer will bring significant benefits to both users and the ecosystems as a whole.
 
 ## Set up development environment
 1. Install NodeJS
