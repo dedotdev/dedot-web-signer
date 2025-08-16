@@ -67,7 +67,7 @@ const RequestAccess: FC<RequestProps> = ({ className = '', message }) => {
         </div>
       ) : (
         <div>
-          <h6 className='text-center mb-4'>{t('Set up your Dedot Signer now to connect')}</h6>
+          <h6 className='text-center mb-4'>{t('Set up your wallet now to connect')}</h6>
           <div className='flex gap-4'>
             <Button size='large' variant='text' className='xs:w-2/5' color='warning' onClick={rejectAccess}>
               {t<string>('Cancel')}

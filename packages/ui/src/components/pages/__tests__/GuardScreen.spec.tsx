@@ -55,7 +55,7 @@ describe('GuardScreen', () => {
       await user.click(resetWalletButton);
 
       expect(await screen.findByText(/Welcome to Dedot Signer/)).toBeInTheDocument();
-      expect(await screen.findByText(/Set up your Dedot Signer now/)).toBeInTheDocument();
+      expect(await screen.findByText(/Set up your wallet now/)).toBeInTheDocument();
     });
 
     it('should go to Outlet content after unlocking the wallet', async () => {
