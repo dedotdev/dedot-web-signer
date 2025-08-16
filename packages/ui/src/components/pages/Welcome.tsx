@@ -30,7 +30,7 @@ const Welcome: React.FC<WelcomeProps> = ({ className = '', onCreateNewWallet, on
         </p>
       </div>
       <div className='mt-8'>
-        <h4 className='mb-4'>{t<string>('Set up your Dedot Signer now')}</h4>
+        <h4 className='mb-4'>{t<string>('Set up your wallet now')}</h4>
 
         <div className='flex flex-col gap-4 items-center'>
           <Button size='large' className='min-w-[270px]' onClick={doCreateNewWallet}>

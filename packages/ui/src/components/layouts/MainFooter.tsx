@@ -8,7 +8,7 @@ const MainFooter: FC<Props> = ({ className = '' }) => {
     <footer className={`${className} border-t border-black/10 dark:border-white/15`}>
       <Container maxWidth='sm'>
         <div className='flex flex-col sm:flex-row justify-between items-center py-4 gap-4 max-w-[800px] mx-auto'>
-          <span className='text-sm'>Copyright &copy; 2025 dedot.dev</span>
+          <span className='text-sm'>Copyright &copy; 2025 <a href="https://dedot.dev" className='text-inherit' target='_blank'>dedot.dev</a></span>
           <div className='flex gap-4'>
             <a href='https://x.com/realsinzii' target='_blank'>
               <Twitter
