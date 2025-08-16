@@ -1,6 +1,6 @@
 {
   "name": "@dedot/signer-base",
-  "version": "0.0.23",
+  "version": "0.1.0",
   "description": "Shared functions, logics for Dedot Signer",
   "author": "Thang X. Vu <thang@dedot.dev>",
   "homepage": "https://github.com/dedotdev/dedot-web-signer/tree/main/packages/base#readme",

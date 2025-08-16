@@ -1,3 +1,3 @@
 // THIS FILE IS AUTO-GENERATED, DO NOT EDIT!
 
-export const packageInfo = { name: '@dedot/signer-sdk', version: '0.0.23' };
+export const packageInfo = { name: '@dedot/signer-sdk', version: '0.1.0' };

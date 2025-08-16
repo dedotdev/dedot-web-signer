@@ -1,6 +1,6 @@
 {
   "name": "@dedot/signer-keyring",
-  "version": "0.0.23",
+  "version": "0.1.0",
   "description": "Keyring for Dedot Signer",
   "author": "Thang X. Vu <thang@dedot.dev>",
   "homepage": "https://github.com/dedotdev/dedot-web-signer/tree/main/packages/keyring#readme",
