@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
 import { useSearchParams } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
@@ -54,7 +54,7 @@ const Request: FC<Props> = ({ className = '' }) => {
     handleRequest(message);
   });
 
-  useEffectOnce(() => {
+  useEffect(() => {
     const onMessage = (event: MessageEvent<WalletRequestMessage>) => {
       console.log('Received message', event);
 
@@ -70,9 +70,14 @@ const Request: FC<Props> = ({ className = '' }) => {
       handleRequest(message, origin);
     };
 
+    console.log('Registered event listener');
     window.addEventListener('message', onMessage);
-    return () => window.removeEventListener('message', onMessage);
-  });
+
+    return () => {
+      console.log('Unregistered event listener');
+      window.removeEventListener('message', onMessage);
+    };
+  }, []);
 
   useEffectOnce(() => {
     openerWindow().postMessage(newWalletSignal(WalletSignal.WALLET_TAB_INITIALIZED, walletInfo), '*');
