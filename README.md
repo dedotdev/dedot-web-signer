@@ -30,7 +30,7 @@ A website-based multi-chain crypto wallet & signer for <a href="https://polkadot
   <img width="479" src="https://user-images.githubusercontent.com/6867026/227230786-0796214a-3e3f-42af-94e9-d4122c730b62.png">
 </p>
 
-## What to expect from Dedot Signer?
+## What to expect from Dedot Signer (formerly Coong Wallet)?
 - No need for extra steps to install browser extensions or mobile apps, Dedot Signer is just a website running on your browser
 - Works on both desktop and mobile devices
 - Compatible with [Polkadot.js extension](https://github.com/polkadot-js/extension) API, [integrate Dedot Signer](#integrate-dedot-signer-into-your-dapps) into your dapp within just a few steps
@@ -215,7 +215,7 @@ const onClickTransferBalance = async () => {
   const destinationAddress = 0x000...;
   
   const hash = await client.tx.balances
-    .transferKeepAlive(destinationAddress, 1_000_000_000_000)
+    .transferKeepAlive(destinationAddress, 1_000_000_000_000n)
     .signAndSend(fromAddress, { signer: injected.signer });
 }
 
