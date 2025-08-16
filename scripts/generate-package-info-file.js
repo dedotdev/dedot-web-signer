@@ -7,6 +7,10 @@ const main = () => {
 
   const { name, version } = packageJson;
 
+  if (['demo-dapp'].includes(name)) {
+    return;
+  }
+
   const fileHeader = `// THIS FILE IS AUTO-GENERATED, DO NOT EDIT!\n`;
   const fileContent = `${fileHeader}\nexport const packageInfo = { name: '${name}', version: '${version}' };\n`;
 
