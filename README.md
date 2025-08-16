@@ -3,7 +3,7 @@
 
 <br/>
 <p align="center">
-  <img height="100" alt="dedot-logo-dark" src="https://github.com/user-attachments/assets/c97ce3fe-c11e-42ee-9b06-8d865d9c1830" />
+  <img height="100" alt="dedot-logo-dark" src="https://github.com/user-attachments/assets/61d34e96-80b6-455c-8cc9-365e397e89bb" />
 </p>
 
 <h1 align="center">
