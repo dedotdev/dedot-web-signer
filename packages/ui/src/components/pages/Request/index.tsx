@@ -56,6 +56,8 @@ const Request: FC<Props> = ({ className = '' }) => {
 
   useEffectOnce(() => {
     const onMessage = (event: MessageEvent<WalletRequestMessage>) => {
+      console.log('Received message', event);
+
       const { origin, data: message } = event;
       if (origin === window.location.origin || !isWalletRequest(message)) {
         return;
