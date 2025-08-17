@@ -230,7 +230,7 @@ Integration example can be found in the playground dapp source code in [this rep
    
 ## License
 
-[Apache 2.0](https://github.com/dedotdev/dedot-web-signer/blob/main/LICENSE)
+[MIT](https://github.com/dedotdev/dedot-web-signer/blob/main/LICENSE)
   
   
   
